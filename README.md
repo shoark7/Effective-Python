@@ -102,9 +102,10 @@
 
 
 
-[way1]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay1_KnowThyself.py
-[way2]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay2_PythonStyleGuide.py
-[way3]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay3_Bytes_Str_Unicode.py
+[way1]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay01_KnowThyself.py
+[way2]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay02_PythonStyleGuide.py
+[way3]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay03_Bytes_Str_Unicode.py
+[way4]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay04_UseHelpFunction.py
 
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay16_generator.py
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay17_IterateDefensively.py
