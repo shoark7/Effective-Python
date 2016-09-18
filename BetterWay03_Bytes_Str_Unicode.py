@@ -1,8 +1,7 @@
-    import sys
+import sys
 
-# 20쪽 
-# bytes, str, unicode의 차이점을 알자.
-# 16년 9월 10일 완성.
+# 20쪽, bytes, str, unicode의 차이점을 알자.
+# 2016/09/10일 작성.
 
 """
 인코딩은 빌어먹을 만큼 중요하다. 난 그렇게 생각한다.
