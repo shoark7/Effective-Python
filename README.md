@@ -111,3 +111,4 @@
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay17_IterateDefensively.py
 [way18]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay18_PositionalArg.py
 [way19]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay19_KeywordArg.py
+[way20]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay20_DynamicDefaultArgument.py
