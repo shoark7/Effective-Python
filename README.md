@@ -45,7 +45,7 @@
 29. [Better way 29.  게터와 세터 메서드 대신에 일반 속성을 사용하자][way29]
 30. [Better way 30.  속성을 리팩토링하는 대신 @property를 고려하자][way30]
 31. [Better way 31.  재사용 가능한 @property 메서드에는 디스크럽터를 사용하자][way31]
-32. [Better way 32.  지연 속성에는 __getattr__, __getattribute__, __setattr__을 사용하자][way32]
+32. [Better way 32.  지연 속성에는 \__getattr__, \__getattribute__, \__setattr__을 사용하자][way32]
 33. [Better way 33.  메타클래스로 서브클래스를 검증하자][way33]
 34. [Better way 34.  메타클래스로 클래스의 존재를 등록하자][way34]
 35. [Better way 35.  메타클래스로 클래스 속성에 주석을 달자][way35]
