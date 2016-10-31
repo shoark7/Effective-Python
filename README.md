@@ -114,3 +114,4 @@
 [way20]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay20_DynamicDefaultArgument.py
 [way21]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay21_ForceKeywordArgument.py
 [way22]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay22_UseHelperClass.md
+[way23]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay23_UseFuncForInterface.md
