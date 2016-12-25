@@ -106,6 +106,7 @@
 [way2]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay02_PythonStyleGuide.py
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay03_Bytes_Str_Unicode.py
 [way4]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay04_UseHelpFunction.py
+[way5]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay25_InitializeSuperClassWithSuper.py
 
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay16_generator.py
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay17_IterateDefensively.py
