@@ -117,3 +117,4 @@
 [way22]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay22_UseHelperClass.md
 [way23]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay23_UseFuncForInterface.md
 [way25]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay25_InitializeSuperClassWithSuper.py
+[way28]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay28_CustomContainer_collections.abc.py
