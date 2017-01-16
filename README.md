@@ -107,6 +107,7 @@
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay03_Bytes_Str_Unicode.py
 [way4]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay04_UseHelpFunction.py
 [way5]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay25_InitializeSuperClassWithSuper.py
+[way6]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay06_Dontusestridetoomuch.py
 
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay16_generator.py
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay17_IterateDefensively.py
@@ -116,6 +117,9 @@
 [way21]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay21_ForceKeywordArgument.py
 [way22]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay22_UseHelperClass.md
 [way23]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay23_UseFuncForInterface.md
+
 [way25]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay25_InitializeSuperClassWithSuper.py
+
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay27_UsePrivateAttribute.py
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay28_CustomContainer_collections.abc.py
+[way29]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay29_dontusegetter.py
