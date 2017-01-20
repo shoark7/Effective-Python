@@ -41,8 +41,8 @@ import subprocess
 from time import time
 
 proc = subprocess.Popen(
-				['echo', 'Hello from the child!'],
-				stdout=subprocess.PIPE)
+	['echo', 'Hello from the child!'],
+	stdout=subprocess.PIPE)
 out, err = proc.communicate()
 print(out)  # b'Hello from the child!\n'
 
@@ -188,8 +188,8 @@ print('Exit status', proc.poll()) # Exit status -15
 
 def run_md5(input_stdin):
     proc = subprocess.Popen(['md5'],
-    							stdin=input_stdin,
-    							stdout=subprocess.PIPE)
+    			    stdin=input_stdin,
+    			    stdout=subprocess.PIPE)
     return proc
     
 # 이제 데이터를 암호화하는 openssl 프로세스 집합과 암호화된 결과를 md5로 해시하는 프로세스 집합을 시작할 수 있다.
