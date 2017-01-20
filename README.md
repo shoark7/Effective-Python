@@ -124,3 +124,5 @@
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay27_UsePrivateAttribute.py
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay28_CustomContainer_collections.abc.py
 [way29]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay29_dontusegetter.py
+
+[way36]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay36_Usesubprocess.py
