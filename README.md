@@ -126,3 +126,4 @@
 [way29]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay29_dontusegetter.py
 
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay36_Usesubprocess.py
+[way37]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay37_UseThreadForIO.md
