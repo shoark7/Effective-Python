@@ -1,4 +1,4 @@
-# Better Way 8. 리스트 컴프리헨션에서 표현식을 두 개 넘게 쓰지 말자.
+# Better Way 8.리스트 컴프리헨션에서 표현식을 두 개 넘게 쓰지 말자.
 
 #### 36쪽.
 #### 2017/01/24 작성.
@@ -6,7 +6,7 @@
 
 ## Part 1.
 
-리스트 컴프리헨션은 [기본 사용법뿐 아니라](https://github.com/shoark7/Effective-Python/blob/master/BetterWay07_useListComp.py) 다중 루프도 지원한다.  
+리스트 컴프리헨션은 [기본 사용법](https://github.com/shoark7/Effective-Python/blob/master/BetterWay07_useListComp.py)뿐아니라 다중 루프도 지원한다.  
 예를 들어 행렬을 평평한 리스트 하나로 간략화한다고 가정하자.
 
 ```python
@@ -49,10 +49,12 @@ flat = [x for sublist1 in my_lists
 
 ```
 정말 고된 식이다. 이 정도되면 리스트 컴프리헨션이 다른 방법보다 그다지 짧아보이지 않는다.  
+
 이번엔 일반 루프문으로 같은 결과를 만들어본다.  
 이 버전은 들여쓰기를 사용해서 리스트 컴프리헨션보다 이해하기 쉽다.  
-즉, 리스트 컴프리헨션이 언제나 최선을 아니라는 의미.
+**즉, 리스트 컴프리헨션이 언제나 최선을 아니라는 의미.**
 
+```python
 flat = []
 for sublist1 in my_list2:
     for sublist2 in sublist1:
@@ -77,7 +79,7 @@ c = [x for x in a if x > 4 and  x % 2 == 0]
 ```
 
 조건은 루프의 각 레벨에서 **for 표현식 뒤에 설정할 수 있다.**  
-예를 들어 주어진 행렬에서 각 행(row)의 합이 10이상일 때 그 행의 셀 중으로 나누어 떨어지는 셀을 구해보자.  
+예를 들어 주어진 행렬에서 각 행(row)의 합이 10 이상 일 때 그 행의 셀 중에서 3으로 나누어 떨어지는 셀을 구해보자.  
 다음처럼 리스트 컴프리헨션으로 표현하면 간단하지만 이해하기는 매우 어렵다.
 
 ```python
