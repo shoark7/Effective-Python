@@ -110,6 +110,7 @@
 [way6]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay06_Dontusestridetoomuch.py
 [way7]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay07_useListComp.py
 [way8]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay08_ListComprehension.md
+[way9]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay09_UseGeneratorExpression.md
 
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay16_generator.py
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay17_IterateDefensively.py
