@@ -112,6 +112,7 @@
 [way8]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay08_ListComprehension.md
 [way9]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay09_UseGeneratorExpression.md
 [way10]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay10_useEnumerate.md
+[way11]:https://github.com/shoark7/Effective-Python/edit/master/BetterWay11_UseZip.md
 
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay16_generator.py
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/BetterWay17_IterateDefensively.py
