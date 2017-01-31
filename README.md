@@ -113,6 +113,7 @@
 [way9]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay09_UseGeneratorExpression.md
 [way10]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay10_useEnumerate.md
 [way11]:https://github.com/shoark7/Effective-Python/edit/master/files/BetterWay11_UseZip.md
+[way12]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay12_dontuse_else.md
 
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay16_generator.py
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay17_IterateDefensively.py
