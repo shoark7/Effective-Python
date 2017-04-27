@@ -52,9 +52,10 @@ class PathInputData(InputData):
 일단은 단순히 경로에서 파일을 읽는 예제를 사용한다.  
 
 <br>
+
 #### 1.2 map, reduce 구현하기
 다음에는 입력을 받아 map, reduce를 실행하는 클래스를 생성한다.  
-이번 예제에서 map task는 입력 데이터에서 줄의 개수('\\n')를 세는 일을 한다.
+이번 예제에서 map task는 입력 데이터에서 줄의 개수('\\n')를 세는 일을 한다.  
 
 
 ```python
