@@ -125,7 +125,7 @@
 [way21]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay21_ForceKeywordArgument.py
 [way22]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay22_UseHelperClass.md
 [way23]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay23_UseFuncForInterface.md
-
+[way24]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay24_classmethod.md
 [way25]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.py
 
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.py
