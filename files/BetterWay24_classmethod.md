@@ -1,4 +1,4 @@
-# Better Way 24. 객체를 범용으로 생성하려면 @classmethod 다형성을 이용하자
+## Better Way 24. 객체를 범용으로 생성하려면 @classmethod 다형성을 이용하자
 
 ## 102쪽
 
@@ -12,11 +12,12 @@
 다른 기능을 제공할 수 있다.(collections.abc의 여러 클래스들 참고)  
 
 \* 책에서의 예제는 맵리듀스(이하 _mapreduce_)를 구현하면서 다형성을 설명하는데,  
-사실 예제가 다소 어렵다. _mapreduce_에 대한 기본적인 이해가 필요하고,
+사실 예제가 다소 어렵다. _mapreduce_에 대한 기본적인 이해가 필요하고,  
 코드 자체도 유심히 봐야하는 면이 있다. 하지만 분명히 많이 배울 수 있다. 자신한다.  
-[what is MapReduce](https://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/) 이곳을 참고하라.  
+[what is MapReduce](https://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/) <- 이곳을 참고하라.
 
 시작하자.  
+<br><Br>
 
 
 ### Part 1. _mapreduce_ 기본 구현
@@ -43,14 +44,14 @@ class PathInputData(InputData):
         return open(self.path).read()
 ```  
 
-`InputData`는 일종의 interface이고, `PathInputData`는 _mapreduce_를 위한 구현체이다.  
+`InputData`는 일종의 interface이고, `PathInputData`는 mapreduce를 위한 구현체이다.  
 `PathInputData`는 경로를 입력 받으면 read 메서드를 통해 파일을 읽어들인다.  
 
 `PathInputData`와 같은 `InputData`의 서브클래스는 얼마든지 만들 수 있다.  
 예를 들면 네트워크에서 파일을 읽어들이거나 zip 파일을 압축, 읽는 클래스도 존재할 수 있다는 뜻이다.  
 일단은 단순히 경로에서 파일을 읽는 예제를 사용한다.  
 
-
+<br>
 #### 1.2 map, reduce 구현하기
 다음에는 입력을 받아 map, reduce를 실행하는 클래스를 생성한다.  
 이번 예제에서 map task는 입력 데이터에서 줄의 개수('\\n')를 세는 일을 한다.
@@ -156,8 +157,8 @@ print("There are", result, "lines.")
 
 Test code이다. `tempfile`이라는 디렉토리를 공부하면 좋겠다.  
 
-좋다. 잘 작동한다. 그런데 이 코드는 그리 좋은 코드가 아니다.  
-
+좋다. 잘 작동한다. 그런데 이 코드는 그다지 좋은 코드는 아니다.  
+<br><br>
 
 ### Part 2. @classmethod를 통한 mapreduce 구현
 
@@ -197,7 +198,7 @@ a.say()
 
 
 실제로 classmethod를 통해 위 예제를 다시 구현해보자.  
-
+<br>
 
 #### 2.1. 데이터 입력 받기
 ```python
@@ -234,7 +235,7 @@ generate\_inputs의 모든 서브 클래스는 이 메서드를 구현해야 한
 가지고 있는 generate\_inputs 메서드를 범용적으로 사용할 수 있다.
 
 다음은 input으로 map, reduce를 시행할 수 있는 GenericWorker도 위와 유사하게 작성해보자.  
-
+<br>
 
 
 #### 2.2. map, reduce 구현하기
@@ -298,7 +299,7 @@ with TemporaryDirectory() as tmpdir:
 
 개인적으로 파이썬에서 그냥 메서드 쓰면 되지 classmethod가 무슨 특별한 의미가 있냐고 생각했는데  
 이번 예제를 통해 그런 편견을 고쳤다. 좀 더 능동적으로, 개방적으로 질문을 던지고 알아가야겠다.
-
+<br><BR>
 
 
 ### 핵심정리
