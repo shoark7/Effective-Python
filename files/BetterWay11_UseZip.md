@@ -13,7 +13,7 @@ letters = [len(name) for name in names]
 ```
 
 파생 리스트의 아이템과 소스 리스트의 아이템은 서로 인덱스로 연관되어 있다.  
-따라서 두 리스트를 병렬로 순회하려면 소스 리스트인 _names_의 길이만큼 순회하면 된다.
+따라서 두 리스트를 병렬로 순회하려면 소스 리스트인 `names`의 길이만큼 순회하면 된다.
 
 ```python
 longest_name = None
