@@ -127,7 +127,7 @@
 [way23]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay23_UseFuncForInterface.md
 [way24]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay24_classmethod.md
 [way25]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.py
-
+[way26]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay26_UseMixinClass.md
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.py
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay28_CustomContainer_collections.abc.py
 [way29]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay29_dontusegetter.py
