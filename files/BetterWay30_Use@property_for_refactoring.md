@@ -1,4 +1,4 @@
-# Betteer way 30. 속성을 리팩토링하는 대신 @property를 고려하자
+# Betteer way 30. 속성 리팩토링 대신 @property를 고려하자
 
 
 #### 139쪽
@@ -23,8 +23,8 @@
 
 여기서는 자세히 파고들기 보다는 구현 자체가 의미를 두었다.  
 나도 몰라서 찾아봤기 때문에 설명했다. 이제 예시를 보도록 한다.
-
 <br>
+
 ```python
 
 from datetime import timedelta
@@ -45,8 +45,8 @@ class Bucket:
 
 구멍 난 양동이 알고리즘은 양동이를 채울 때마다 투입물이  
 다음 기간으로 넘어가지 않게 하는 식으로 동작한다.
-
 <br>
+
 ```python
 
 def fill(bucket, amount):
@@ -56,9 +56,10 @@ def fill(bucket, amount):
         bucket.reset_time = now
     bucket.quota += amount
 ```
-또한 투입물을 소비하는 쪽에서는 매번 사용할 양을 뺄 수 있는지 확인해야 한다.
 
+또한 투입물을 소비하는 쪽에서는 매번 사용할 양을 뺄 수 있는지 확인해야 한다.
 <br>
+
 ```python
 def deduct(bucket, amount):
     now = datetime.now()

@@ -131,8 +131,9 @@
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.py
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay28_CustomContainer_collections.abc.py
 [way29]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay29_dontusegetter.py
+[way30]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay30_Use@property_for_refactoring.md
 
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.py
 [way37]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay37_UseThreadForIO.md
 
-[way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_Use_functoolswraps.md
+[way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_Use_functoolswraps.md
