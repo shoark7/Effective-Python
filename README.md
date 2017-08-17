@@ -137,5 +137,6 @@
 [way37]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay37_UseThreadForIO.md
 
 [way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_Use_functoolswraps.md
+[way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
