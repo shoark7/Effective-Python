@@ -46,6 +46,7 @@ with lock:
 ```
 
 <br>
+
 Lock 클래스에는 with 문에 대한 추가 동작이 설정되어 있어 **Lock를 획득하고 해제하는 동작이 자동 실행된다.**  
 따라서 위 코드는 다음 코드와 본질적으로 동일하다.
 
@@ -59,12 +60,14 @@ finally:
 ```
 
 <br>
+
 두 코드를 비교하면 try/finally 구문에서 반복되는 코드를 작성할 필요가 없는 with 문 버전이 더 낫다.  
 with 문 안에 있는 블록은 하나의 context라고 할 수 있으며 contextlib 모듈은 이런 컨텍스트에 대해 다룬다.  
 내장모듈 contextlib을 사용하면 객체와 함수를 with 문에 사용할 수 있게 만들기 쉽다.  
 이 모듈은 간단한 함수를 with 문에 사용할 수 있게 하는 **contextmanager** 데코레이터를 포함한다.  
 이 데코레이터를 사용하는 것이 \_\_enter\_\_와 \_\_exit\_\_이라는 특수 메서드를 담은  
 새 클래스를 정의하는 방법보다 훨씬 쉽다.  
+
 <br>
 
 사용법에 대한 간단한 예를 살펴보자. 이 예는 공식문서에서 가져왔음을 밝힌다.
@@ -95,6 +98,8 @@ foo
 또한 yield를 사용한다는 것은 이 함수가 제너레이터라는 것을 의미하며  
 일반적으로 reentrant하지 않다.  
 
+<Br>
+
 ```python
 # contextmanager used generator is not reentrant
 from contextlib import contextmanager
@@ -122,7 +127,7 @@ RuntimeError: generator didn't yield
 
 reentrant한 contextmanager를 원한다면 공식문서를 자세히 읽어보자.~~(잘 모르겠다. ㅠㅠ)~~
 
-<br><br>
+<br>
 
 이제는 좀 더 제대로 된 예제를 살펴보자.  
 내장 [logging](https://docs.python.org/3/library/logging.html) 모듈을 사용한 예제로,  
@@ -169,7 +174,7 @@ def debug_logging(level):
 
 앞서 말했듯이 yield 부분이 with 블록의 내용이 실행되는 지점이다.  
 이 부분을 try/finally 부분으로 감쌈으로써   
-**with 블록에서 일어나는 모든 예외를 yield 표현식이 다시 일으키므로
+**with 블록에서 일어나는 모든 예외를 yield 표현식이 다시 일으키므로  
 이 부분을 try/finally 부분으로 감쌈으로써 예외를 헬퍼 함수로 처리할 수 있다.**  
 
 
@@ -202,8 +207,10 @@ Error log here
 
 with 문에 전달되는 컨텍스트 매니저에서 객체를 반환할 수도 있다.  
 이 객체는 복합문에 as 부분에 있는 지역 변수에 할당된다.  
-이 기능을 이용하면 with 블록 안에 있는 코드에서 직접 컨텍스트와 상호작용할 수 있다.
+이 기능을 이용하면 with 블록 안에 있는 코드에서 직접 컨텍스트와 상호작용할 수 있다.  
 앞서 봤던 파일 여닫는 코드가 그 예시이다.
+
+<br>
 
 ```python
 # 반환 객체를 fd라는 지역변수에 할당
@@ -218,6 +225,8 @@ with open('text.txt', 'r+') as fd:
 함수에서 as 타깃에 값을 제공할 수 있게 하려면, 컨텍스트 매니저에서 yield를 사용하여  
 값을 넘겨주기만 하면 된다. 예를 들어 다음은 Logger인스턴스를 가져와 심각성 수준을 설정한 후  
 yield로 인스턴스를 as에 전달하도록 한 예다.
+
+<Br>
 
 ```python
 @contextmanager
@@ -235,6 +244,7 @@ with 블록에서 로깅 심각성 수준을 충분히 낮게 설정해서 as �
 호출하면 출력이 나올 것이다. 기본 프로그램 로거의 기본 로깅 수준은 WARNGING이므로 logging 모듈을  
 직접 사용하면 아무것도 출력되지 않는다.
 
+<br>
 
 ```python
 with log_level(logging.DEBUG, 'my_log') as logger:
