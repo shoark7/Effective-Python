@@ -185,7 +185,7 @@ This module provides easy ways to determine when words you've
 found have several special properties.
 
 Available functions:
-- palindrome: Determine ife a word is a palindrome.
+- palindrome: Determine if a word is a palindrome.
 - check_anagram: Determine if two words are anagrams.
 """
 
