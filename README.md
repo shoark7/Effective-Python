@@ -141,5 +141,6 @@
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
 
+[way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
 [way57]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay57_Use_pdb.md
