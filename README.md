@@ -140,3 +140,6 @@
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
+
+[way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
+[way57]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay57_Use_pdb.md
