@@ -102,7 +102,7 @@
 
 
 
-[way1]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay01_KnowThyself.py
+[way1]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay01_KnowThyself.md
 [way2]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay02_PythonStyleGuide.py
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.py
 [way4]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay04_UseHelpFunction.py
