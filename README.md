@@ -103,7 +103,7 @@
 
 
 [way1]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay01_KnowThyself.md
-[way2]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay02_PythonStyleGuide.py
+[way2]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay02_PythonStyleGuide.md
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.py
 [way4]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay04_UseHelpFunction.py
 [way5]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.py
