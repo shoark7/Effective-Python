@@ -104,9 +104,9 @@
 
 [way1]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay01_KnowThyself.md
 [way2]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay02_PythonStyleGuide.md
-[way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.py
-[way4]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay04_UseHelpFunction.py
-[way5]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.py
+[way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.md
+[way4]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay04_UseHelpFunction.md
+[way5]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.md
 [way6]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay06_Dontusestridetoomuch.py
 [way7]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay07_useListComp.py
 [way8]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay08_ListComprehension.md
