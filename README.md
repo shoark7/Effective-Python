@@ -1,13 +1,13 @@
 # __Effective Python__
 
--- It's for Koreans. For foreigners, please see Daily practice which is for foreigners.     
-* [파이썬 코딩의 기술](http://book.naver.com/bookdb/book_detail.nhn?bid=10382589)의 59장의 내용을 한 장씩 정리.
+-- It's for Koreans. For Non-koreans, please see Daily practice which is for foreigners.     
+* [파이썬 코딩의 기술](http://book.naver.com/bookdb/book_detail.nhn?bid=10382589){:target="_blank"}의 59장의 내용을 한 장씩 정리.
 * 책을 대신해서 볼 수 있을 정도로 구체적으로 옮김.
 * 책 버전은 초판 2쇄(2016-06-20).
 
 ## 목차
----
-#### 1장. 파이썬다운 생각
+
+### 1장. 파이썬다운 생각
 1. [Better way 01. 사용 중인 파이썬의 버전을 알자][way1]
 2. [Better way 02. PEP 8 스타일 가이드를 따르자][way2]
 3. [Better way 03. bytes, str, unicode의 차이점을 알자][way3]
@@ -22,7 +22,7 @@
 12. [Better way 12. for와 while 루프 뒤에는 else 블록을 쓰지 말자][way12]
 13. [Better way 13. try/except/ese/finally에서 각 블록의 장점을 이용하자][way13]
 
-#### 2장. 함수
+### 2장. 함수
 14. [Better way 14. None을 반환하기 보다 예외를 일으키자][way14]
 15. [Better way 15. 클로저가 변수 스코프와 상호 작용하는 방법을 알자][way15]
 16. [Better way 16. 리스트를 반환하는 대신 제너레이터를 고려하자][way16]
@@ -32,7 +32,7 @@
 20. [Better way 20. 동적 기본 인수를 지정하려면 None과 docstring을 사용하자][way20]
 21. [Better way 21. 키워드 전용 인수로 명료성을 강요하자][way21]
 
-#### 3장. 클래스와 상속
+### 3장. 클래스와 상속
 22. [Better way 22. 딕셔너리와 튜플보다는 헬퍼 클래스로 관리하자][way22]
 23. [Better way 23. 인터페이스가 간단하면 클래스 대신 함수로 받자][way23]
 24. [Better way 24. 객체를 범용으로 생성하려면 @classmethod 다형성을 이용하자][way24]
@@ -75,7 +75,7 @@
 52. [Better way 52.  순환 의존성을 없애는 방법을 알자][way52]
 53. [Better way 53.  의존성을 분리하고 재현하려면 가상 환경을 사용하자][way53]
 
-#### 8장. 제품화
+### 8장. 제품화
 54. [Better way 54.  배포 환경을 구성하는 데는 모듈 스코프 코드를 고려하자][way54]
 55. [Better way 55.  디버깅 출력용으로는 repr 문자열을 사용하자][way55]
 56. [Better way 56.  unittest로 모든 것을 테스트하자][way56]
