@@ -13,12 +13,12 @@
 # 메시지와 값 리스트를 받는 함수가 필요할 것이다.
 
 # def log(message, values):
-#         if not values:
-#             print(message)
-#         else:
-#             values_string = ', '.join(str(x) for x in values)
-#             # ↑ help(str.join)을 검색해본 결과 인자가 iterable... 그래서 리스트 컴프리핸션이 가능하다.
-#             print('%s: %s' % (message, values_string))
+#     if not values:
+#         print(message)
+#     else:
+#         values_string = ', '.join(str(x) for x in values)
+#         # ↑ help(str.join)을 검색해본 결과 인자가 iterable... 그래서 리스트 컴프리핸션이 가능하다.
+#         print('%s: %s' % (message, values_string))
 
 # log('my numbers are', [1,2])
 # log('hi, there', [])
@@ -28,13 +28,13 @@
 
 
 def log(message, *values):
-        if not values:
-            print(values) # 어떤 values 값이 들어갔는지 확인해보기 위해 임시적으로 넣었던 코드
-            print(message)
-        else:
-            print(values)
-            values_str = ', '.join(str(x) for x in values)
-            print('%s: %s' % (message, values_str))
+    if not values:
+        print(values) # 어떤 values 값이 들어갔는지 확인해보기 위해 임시적으로 넣었던 코드
+        print(message)
+    else:
+        print(values)
+        values_str = ', '.join(str(x) for x in values)
+        print('%s: %s' % (message, values_str))
 
 
 # log('my numbers are', 1, 2, 3)
@@ -60,8 +60,8 @@ def log(message, *values):
         ↓↓↓↓↓
 """
 def my_generator():
-        for i in range(10):
-            yield i
+    for i in range(10):
+        yield i
 
 def my_func(*args):
     type(args)
