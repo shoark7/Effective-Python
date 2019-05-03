@@ -48,10 +48,10 @@ b'A'
 
 유니코드 str과 바이너리 bytes를 호환하려면 다음과 같은 방식을 거쳐야 한다.
 
-* **str -> bytes는 str의 encode 메소드를 통해야 한다.**
-* **bytes -> str은 bytes의 decode 메소드를 통해야 한다.**
+* **'str -> bytes'는 str의 encode 메소드를 통해야 한다.**
+* **'bytes -> str'은 bytes의 decode 메소드를 통해야 한다.**
 
-UBuntu를 기준으로, **인코딩, 디코딩 모두 기본 인코딩은 'utf-8'을 사용하며, 'CP949' 등 다른 인코딩을 사용하려면
+Ubuntu를 기준으로 **인코딩, 디코딩 모두 기본 인코딩은 'utf-8'을 사용하며, 'CP949' 등 다른 인코딩을 사용하려면
 메소드에 인자를 주면 된다.** 기본 인코딩은 운영체제 환경에 따라 다를 수 있다.
 
 
@@ -59,8 +59,7 @@ UBuntu를 기준으로, **인코딩, 디코딩 모두 기본 인코딩은 'utf-8
 # example
 
 'a'.encode(encoding='CP949') # 1.
-
-b'\x45'.decode() # 2.
+b'\x45'.decode('CP949') # 2.
 ```
 
 
@@ -80,5 +79,5 @@ fp = open('example.txt', 'r', encoding='utf-8').read()
 
 ## 2. 생각해볼 문제.
 
-* codecs module에 대해 알아보자.
+* `codecs` module에 대해 알아보자.
 * '가'를 utf-8로 인코딩해보자. 아마 'A'의 b'\x41' 보다 훨씬 길텐데 왜 그럴까?
