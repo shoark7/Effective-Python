@@ -9,7 +9,7 @@
 
 ## 1. List Comprehension의 중첩 허용
 
-**List comprehension(이하 "리스트 컴프리헨션")은 [기본 사용법](https://github.com/shoark7/Effective-Python/blob/master/BetterWay07_useListComp.py)뿐 아니라 다중 루프도 지원한다.**  
+**List comprehension(이하 "리스트 컴프리헨션")은 [기본 사용법](https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay07_useListComp.md)뿐 아니라 다중 루프도 지원한다.**  
 
 예를 들어 2차원 행렬을 1차원 리스트 하나로 간략화한다고 가정하자.
 
@@ -88,7 +88,7 @@ c = [x for x in a if x > 4 and  x % 2 == 0]
 # b와 c는 동일!
 ```
 
-_b_ 가 더 짧다고는 하지만 _c_ 가 훨씬 더 바람직해보인다. 리스트 컴프리헨션을 이 정도까지 공부하지 않은 사람들이 보기엔 저건 오히려 SyntaxError처럼 보이기도 한다.
+_b_ 가 더 짧다고는 하지만 _c_ 가 훨씬 더 바람직해보인다. 리스트 컴프리헨션을 이 정도까지 공부하지 않은 사람들이 보기엔 _b_ 는 논리연산자가 없어 오히려 SyntaxError처럼 보이기도 한다.
 
 **if 조건은 루프의 각 레벨에서 for 표현식 뒤에 설정할 수 있다.** 예를 들어 주어진 행렬에서 각 행(row)의 합이 10 이상일 때 그 행의 셀 중에서 3으로 나누어 떨어지는 셀을 구해보자.    
 
