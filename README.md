@@ -107,8 +107,8 @@
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.md
 [way4]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay04_UseHelpFunction.md
 [way5]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.md
-[way6]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay06_Dontusestridetoomuch.py
-[way7]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay07_useListComp.py
+[way6]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay06_Dontusestridetoomuch.md
+[way7]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay07_useListComp.md
 [way8]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay08_ListComprehension.md
 [way9]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay09_UseGeneratorExpression.md
 [way10]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay10_useEnumerate.md
