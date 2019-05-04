@@ -2,7 +2,7 @@
 
 #### 34쪽
 
-* Created : 201?/??/??
+* Created : 2017/01/16
 * Modified: 2019/05/04  
 
 
@@ -12,7 +12,7 @@
 
 파이썬에는 하나의 iterable에서 리스트를 만들어내는 간결한 문법이 있다. 이를 list comprehension(이하 "리스트 컴프리헨션")이라고 한다.
 
-예를 들어 _list_ 에 있는 각 수의 제곱을 계산한다고 하자. 리스트 컴프리헨션을 쓰면 리스트와, 관련된 _range_ 등의 객체에 할당과 연산을 한 번에 같이 할 수 있다.
+예를 들어 원래의 _list_ 에서 각 수를 제곱한 새로운 _list_ 를 계산한다고 하자. 리스트 컴프리헨션을 쓰면 리스트와, 관련된 _range_ 등의 객체에 할당과 연산을 한 번에 같이 할 수 있다.
 
 
 ```python
@@ -60,6 +60,7 @@ print(ranks_dict) # {1: 'ghost', 2: 'habanero', 3: 'cayene'}
 
 # Comprehension으로 set 만들기
 chile_len_set = {len(name) for name in ranks_dict.values()}
+
 print(chile_len_set) # {8, 5, 6}
 ```
 
