@@ -9,7 +9,7 @@
 
 ## 1. enumerate
 
-파이썬을 처음 배울 때 for문을 배우게 된다. for문에서 **range**를 많이 접했을 것이다.
+파이썬을 처음 배울 때 for문을 배우게 된다. for문에서 **range**를 수없이 썼을 것이다.
 
 ```python
 from random import randint
@@ -17,7 +17,7 @@ from random import randint
 random_bit = 0
 for i in range(64):
     if randint(0, 1):
-        random_bit |= 1 << i
+        random_bit |= (1 << i)
 # 이 코드는 정말 어썸.. 하나 배웠다.
 
 print(random_bit)
@@ -62,7 +62,7 @@ for i in range(len(flavor_list)):
 
 파이썬은 이런 상황을 처리하려고 내장 함수 **enumerate**를 제공한다. 이 함수는 지연 제너레이터(lazy generator)로 이터레이터를 감싼다.(lazy의 뜻은 나중에 포스트한다.)  
 
-**이 제너레이터는 이터레이터에서(예를 들면 list) 루프 인덱스와 다음 값을 한 쌍으로 가져와 넘겨준다.**  
+**이 제너레이터는 이터레이터에서(예를 들면 list iterator) 루프 인덱스와 다음 값을 한 쌍으로 가져와 넘겨준다.**  
 
 직접 예를 보자.  
 
