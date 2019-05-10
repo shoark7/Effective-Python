@@ -1,7 +1,7 @@
 # __Effective Python__
 
 -- It's for Koreans. For Non-koreans, please see Daily practice which is for foreigners.     
-* [파이썬 코딩의 기술](http://book.naver.com/bookdb/book_detail.nhn?bid=10382589){:target="_blank"}의 59장의 내용을 한 장씩 정리.
+* [파이썬 코딩의 기술](http://book.naver.com/bookdb/book_detail.nhn?bid=10382589)의 59장의 내용을 한 장씩 정리.
 * 책을 대신해서 볼 수 있을 정도로 구체적으로 옮김.
 * 책 버전은 초판 2쇄(2016-06-20).
 
