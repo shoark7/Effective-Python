@@ -1,11 +1,18 @@
+## Better Way 16. 리스트를 반환하는 대신 제너레이터를 고려하자
+
+#### 63쪽
+
+* Created : 2017/02/04
+* Modified: 2019/05/11
+
+<br>
+
+## 1. generator
+
+단어들의 index를 저장하는 리스트를 만드는 함수를 만들자.
 
 
-# 63쪽, 리스트를 반환하는 대신 제너레이터를 고려하자.
-import itertools
-
-
-
-# 1. 단어들의 index를 저장하는 리스트를 만드는 함수를 만들자.
+```python
 def index_words(text):
     result = []
     if text:
@@ -15,13 +22,13 @@ def index_words(text):
             result.append(index + 1)
     return result
 
-# 테스트
-# print(index_words('I have a dream that one day, my children go to heaven.'))
 
+print(index_words('I have a dream that one day, my children go to heaven.'))
+```
 
+같은 함수를 제너레이터를 사용해 다시 만든다.
 
-# 2. 같은 함수를 제너레이터를 사용해 다시 만든다.
-
+```python
 def index_words_iter(text):
     if text:
         yield 0
@@ -31,11 +38,11 @@ def index_words_iter(text):
 
 result = list(index_words_iter('okay! Joe, come on!'))
 print(result)
+```
 
+파일에서 입력을 한 번에 한 줄씩 읽어서 해보자.
 
-
-# 3. 파일에서 입력을 한 번에 한 줄씩 읽어서 해보자.
-
+```python
 def index_file(handle):
     offset = 0
     for line in handle :
@@ -50,7 +57,4 @@ def index_file(handle):
         it = index_file(f)
         result = itertools.islice(it, 0, 3)
         print(list(result))
-
-
-
-
+```

@@ -117,7 +117,7 @@
 [way13]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay13_use_tryetc.md
 [way14]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay14_useexception.md
 [way15]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay15_useClosure.md
-[way16]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay16_generator.py
+[way16]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay16_generator.md
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay17_IterateDefensively.py
 [way18]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay18_PositionalArg.py
 [way19]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay19_KeywordArg.py
