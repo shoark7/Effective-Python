@@ -119,7 +119,7 @@
 [way15]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay15_useClosure.md
 [way16]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay16_generator.md
 [way17]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay17_IterateDefensively.md
-[way18]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay18_PositionalArg.py
+[way18]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay18_PositionalArg.md
 [way19]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay19_KeywordArg.py
 [way20]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay20_DynamicDefaultArgument.py
 [way21]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay21_ForceKeywordArgument.py
