@@ -122,7 +122,7 @@
 [way18]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay18_PositionalArg.md
 [way19]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay19_KeywordArg.md
 [way20]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay20_DynamicDefaultArgument.md
-[way21]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay21_ForceKeywordArgument.py
+[way21]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay21_ForceKeywordArgument.md
 [way22]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay22_UseHelperClass.md
 [way23]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay23_UseFuncForInterface.md
 [way24]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay24_classmethod.md
