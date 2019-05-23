@@ -106,7 +106,7 @@
 [way2]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay02_PythonStyleGuide.md
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.md
 [way4]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay04_UseHelpFunction.md
-[way5]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.md
+[way5]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay05_HowToSequenceSlice.md
 [way6]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay06_Dontusestridetoomuch.md
 [way7]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay07_useListComp.md
 [way8]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay08_ListComprehension.md
@@ -126,7 +126,7 @@
 [way22]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay22_UseHelperClass.md
 [way23]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay23_UseFuncForInterface.md
 [way24]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay24_classmethod.md
-[way25]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.py
+[way25]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.md
 [way26]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay26_UseMixinClass.md
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.py
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay28_CustomContainer_collections.abc.py
