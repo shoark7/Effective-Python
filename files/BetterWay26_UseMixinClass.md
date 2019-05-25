@@ -1,168 +1,180 @@
-# 114쪽. 믹스인 유틸리티 클래스에만 다중 상속을 사용하자.
-# 2017/06/20 작성.
-  
-**코드 내용이 꽤 어렵다. 주의 깊게 보기를 권한다**  
-<br>
+## Better Way 26. 믹스인 유틸리티 클래스에만 다중 상속을 사용하자
 
-## Part 1.
-파이썬은 다중 상속을 쉽게 사용하도록 지원한다. 하지만 다중 상속은 아예 안 하는 게 좋다.  
-다중 상속으로 얻는 편리함과 캡슐화가 필요하면 대신 믹스인(mix-in)을 작성하는 방안을 활용하자.  
-믹스인이란 **클래스에서 제공해야 하는 추가적인 메서드만 정의한 작은 클래스**로서,  
-자체 인스턴스 속성을 갖지 않으며, \_\_init\_\_ 를 작성 안 해도 된다.  
-이 믹스인은 장고 CBV(Class Based View)에 폭넓게 구현되어 있는데 참고하기 바란다.  
+#### 114쪽
+
+* Created : 2017/06/20
+* Modified: 2019/05/25  
 
 <br>
-파이썬에서는 타입과 상관없이 객체의 현재 상태를 간단히 조사할 수 있어 믹스인을 쉽게 작성할 수 있다.  
-동적 조사(dynamic inspection, 예를 들면 hasattr, isinstnace 등)를 통해  
-많은 클래스에 적용할 수 있는 범용 기능을 믹스인에 한 번만 작성하면 된다.  
+
+## 1. Python의 믹스인
+
+
+파이썬은 다중 상속을 쉽게 사용하도록 지원한다. 하지만 다중 상속은 아예 안 하는 게 좋다. 다중 상속으로 얻는 편리함과 캡슐화가 필요하면 대신 믹스인(mix-in)을 작성하는 방안을 활용하자.  
+
+믹스인이란 **클래스에서 제공해야 하는 추가적인 메서드만 정의한 작은 클래스**로서, 자체 인스턴스 속성을 갖지 않으며, \_\_init\_\_ 생성자 메소드를 작성 안 해도 된다.  
+
+파이썬에서는 타입과 상관없이 객체의 현재 상태를 간단히 조사할 수 있어 믹스인을 쉽게 작성할 수 있다. **동적 조사(dynamic inspection, 예를 들면 _hasattr_, _isinstnace_ 내장함수 등)를 통해 많은 클래스에 적용할 수 있는 범용 기능을 믹스인에 한 번만 작성하면 된다.**
+
 믹스인을 조합하고 계층으로 구성하면 반복 코드를 최소화하고 재사용성을 극대화할 수 있다.  
 
-<br><br>
+
 본격적인 예를 살펴보자.  
-예를 들어 파이썬 객체를 메모리 내부 표현에서 직렬화용 딕셔너리로 변환하는 기능이 필요하다.  
-이 기능을 모든 클래스에서 사용할 수 있도록 범용으로 작성할 수 있을까?  
+
+예를 들어 **파이썬 객체를 메모리 내부 표현에서 직렬화용 딕셔너리로 변환하는 기능이 필요하다고 하자.**  이 기능을 말 그대로 파이썬의 모든 클래스에서 사용할 수 있도록 범용으로 작성할 수 있을까?  
+
+다음은 상속받는 모든 클래스에 추가될 새 공개 메소드로 이 기능을 구현하는 믹스인이다.
+
 ```python
 class ToDictMixin:
     def to_dict(self):
         return self._traverse_dict(self.__dict__)
 
     def _traverse_dict(self, instance_dict):
-        ouput = {}
-	for key, value in instance_dict.items():
-	    output[key] = self._traverse(key, value)
-	return output
+        output = {}
+        for key, value in instance_dict.items():
+            output[key] = self._traverse(key, value)
+        return output
 
     def _traverse(self, key, value):
         if isinstance(value, ToDictMixin):
-	    return value.to_dict()
-	elif isinstance(value, dict):
-	    return self._traverse_dict(value)
-	elif isinstance(value, list):
-	    return [self._traverse(key, i) for i in value]
-	elif hasattr(value, '__dict__'):
-	    return self._traverse_dict(value.__dict__)
-	else:
-	    return value
+            return value.to_dict()
+        elif isinstance(value, dict):
+            return self._traverse_dict(value)
+        elif isinstance(value, list):
+            return [self._traverse(key, v) for v in value]
+        elif hasattr(value, '__dict__'):
+            return self._traverse_dict(value.__dict__)
+        else:
+            return value
 ```
+
+**_ToDictMixin_ 클래스는 _to\_dict_ 외부 인터페이스를 갖는데 이 클래스는 인스턴스 자체를 탐색해 JSON으로 변환할 _dict_ 를 반환한다.** 그리고 인스턴스를 탐색해 가지고 있는 속성과 행동을 재귀호출해 _dict_ 형태로 반환하는 내부 인터페이스 _\_traverse\_dict_ 메소드와 _\_traverse_ 메소드를 보유하고 있다.
+
+_\_traverse_ 코드가 상당히 복잡함을 알 수 있다. 처음에 이 부분에 골머리를 앓았는데 다 그럴만한 이유가 있다. _to\_dict_ 메소드는 파이썬의 모든 클래스에서 사용할 수 있도록 범용적이어야 한다. _ToDictMixin_ 를 상속받는 클래스뿐 아니라 상속받지 않는 클래스에서도 사용할 수 있어야 한다는 뜻이다.
+
+파이썬에서 값을 담는 _Container_ 원시 클래스(ABC)는 일종의 트리 구조로 계층구조를 가질 수 있다. _dict_ 는 _Container_ 를 상속받기 때문에 이 특징을 공유한다. 이런 상황에서 _to\_dict_ 를 구현한 클래스의 인스턴스가 갖고 있는 속성은 어떤 타입이든 가능하기 때문에 _to\_dict_ 메소드를 갖고 있으리라 합리적으로 기대할 수 없다. 즉, 각 속성 또한 결국엔 인스턴스이고 자신들의 속성을 무수히 많이 가질 수 있기 때문에 각 값들에 대한 대응을 위해 복잡해질 수 없었다. 항상 강조하지만, **복잡도와 자유도는 함께 간다.** 복잡해졌기 때문에 특정 클래스에 얽매이지 않을 수 있는 것이다.
 
 <br>
 
-코드가 꽤나 어렵다. 이 믹스인 클래스는 상속하는 다른 클래스들의 속성을 직렬화용 딕셔너리로 반환한다.  
-코드에 대해 설명하기 전에 **\_\_dict\_\_**, 이것에 대해 알아보면,  
-클래스 인스턴스는 여러 attribute, member를 갖는데, **인스턴스의 \_\_dict\_\_ 속성은 나머지 속성들을 모아**
-**딕셔너리로 반환한다.** 
-
-<br>
+이를 활용한 예를 만들어보자. JSON은 _dict_ 와 유사한데 _dict_ 는 트리로 계층구조를 가질 수 있다고 했다. 실제로 BinaryTree 자료구조를 만들어보자. BinaryTree 자료구조는 가지를 오른쪽, 왼쪽 한 쌍의 값만 갖는 트리구조다.
 
 ```python
-
-class Test:
-    def __init__(self):
-        self.a = 1
-	self.b = 2
-	self.c = 3
-
-t = Test()
-print(t.__dict__)
-
-
->>> {'a': 1, 'b': 2, 'c': 3}
-```
-  
-
-즉 이 코드는 클래스의 속성과 그 값들을 딕셔너리로 반환하는 코드이다.  
-하지만 _traverse와 _traverse_dict에서 꽤나 버벅거리게 하는데 이유가 있다.  
-우리는 가능한 모든 객체에서 작동하는 직렬화 믹스인을 만들고 있고, 각 객체가 가지고 있는  
-속성값의 종류는 천차만별일 것이다. 정수, 소수, 리스트, 딕녀서리, 다른 객체 등등..  
-그렇기 때문에 그 값들에 모두 대응해주기 위해 여러 타입 검사 과정 등을 거치는 것이다.  
-
-또한 _traverse, _traverse_dict는 서로를 반환값으로 사용하는 경우가 있는데, 이는 직렬화용 딕셔너리가  
-보통 중첩되는 경우가 많고 딕셔너리의 원소가 리스트, 딕셔너리일 때 각 원소를 또 다시 재귀적으로   
-딕셔너리화해서 하나의 큰 딕셔너리를 만들기 때문이다. 이 코드는 정말 감탄이 나오는 코드인데,  
-계속 공부해야 할 것 같다.   
-
-<br><br>
-
-이제는 실례로, 바이너리 트리를 딕셔너리로 표현하기 위해 믹스인을 사용하는 예제이다.
-
-```python
-class BinaryTree(ToDictMixin):
+class BinaryTree:
     def __init__(self, value, left=None, right=None):
         self.value = value
-	self.left = left
-	self.right = right
+        self.left = left
+        self.right = right
+```
 
+이제 수많은 관련 파이썬 객체를 딕셔너리로 손쉽게 변환할 수 있다.
+
+```python
 tree = BinaryTree(10,
-	left=BinaryTree(7, right=BinaryTree(9)),
-	right=BinaryTree(13, left=BinaryTree(11)))
+                  left=BinaryTree(7,
+                                  right=BinaryTree(9)
+                                 ),
+                  right=BinaryTree(13,
+                                   left=BinaryTree(11)
+                                  )
+                 )
 
 print(tree.to_dict())
 
 
->>> 
-
+# 결과는 트리 구조를 나타내기 위해 들여쓰기함
 {'left': {'left': None,
-          'right': {'left': None, 'right': None, 'value': 9},
-	            'value': 7},
- 'right': {'left': {'left': None, 'right': None, 'value': 11},
-	'right': None,  'value': 13},
+          'right': {'left': None,
+                    'right': None,
+                    'value': 9},
+          'value': 7},
+ 'right': {'left': {'left': None,
+                    'right': None,
+                    'value': 11},
+           'right': None,
+           'value': 13},
  'value': 10}
-
-
 ```
 
-이진 트리가 딕셔너리로 표현된 것을 볼 수 있다.  
-이렇게 경이로울 수가 있다... 트리를 딕셔너리로 표현한다...   
-이것을 이렇게 아름답게 코드로 옮길 수 있는 사람이 몇이나 있을까..
 
-<br><br><br>
-
-
-## Part 2.
-믹스인의 장점은 범용 기능을 교체할 수 있게 만들어서 필요할 때 동작을 오버라이드할 수 있다는 점이다.   
-예를 들어 다음은 부모 노드에 대한 참조를 저장하는 **BinaryTree**의 서브클래스이다.
+믹스인의 가장 큰 장점은 범용 기능을 교체할 수 있게 만들어서 필요할 때 동작을 오버라이드할 수 있다는 점이다. 예를 들어 작성한 이진트리 클래스를 확장해서 양쪽 노드뿐 아니라 부모 노드에 대한 참조까지 저장하는 클래스를 만들자.
 
 ```python
 class BinaryTreeWithParent(BinaryTree):
     def __init__(self, value, left=None,
                  right=None, parent=None):
         super().__init__(value, left=left, right=right)
-	self.parent = parent
+        self.parent = parent
 ```
 
-이 트리 클래스는 이전 클래스를 상속해 다른 정보들과 함께 부모 노드에 대한 정보도 저장한다.  
-그렇게 ToDictMixin.to_dict의 기본 구현은 이 클래스를 무한 루프에 빠지게 한다.  
-왜인지 알겠는가?(난 이거 1시간 보고 이해했다... ㅠㅠ)  
+이 클래스의 인스턴스에 _to\_dict_ 메소드를 쓰면 무한루프에 빠지게 된다. _self.parent_ 를 _dict_ 로 만들 때 오른쪽이든, 왼쪽이든지 간에 위치할 자기 자신을 참조하기 때문이다.
 
-왜냐하면 이전에는 왼쪽, 오른쪽 자식 노드만 정보를 가지고 있었는데 이제는 부모에 대한  
-정보까지 딕셔너리로 만들어야 하고 부모는 또 자식을 딕셔너리로 찾으니 순환참조가 발생하는 것이다.  
-해결책은 BinaryTreeWithParent 클래스에서 ToDictMixin._traverse 메서드를 오버라이드해서  
-믹스인이 순환에 빠지지 않게 필요한 값만 처리하는 것이다.  
-다음은 메서드를 오버라이드해서 부모를 탐색하지 않고 부모의 value만 가져오도록 만들었다.  
-
+해결책은 간단하다. _BinaryTreeWithParnet_ 클래스에서 _ToDictMixin.\_traverse_ 메소드만 오버라이드해 순환에 빠지지 않도록 살짝만 변경해주면 된다.
 
 ```python
+class BinaryTreeWithParent(BinaryTree):
+    def __init__(self, value, left=None,
+                 right=None, parent=None):
+        super().__init__(value, left=left, right=right)
+        self.parent = parent
 
-def _traverse(self, key, value):
-    if isinstance(value, BinaryTreeWithParent) and key == 'parent':
-        return value.value
-    else:
-	return super()._traverse(key, value)
-
+    def _traverse(self, key, value):
+        # 속성 이름이 'parent'일시 재귀 호출하지 않고 바로 값을 반환
+        if isinstance(value, BinaryTreeWithParent) and key == 'parent':
+            return value.value
+        else:
+            return super()._traverse(key, value)
 ```
 
-순환 참조 속성을 따라가지 않으므로 BinaryTreeWithParent.to_dict는 문제없이 작동한다.
+부모 클래스의 _\_traverse_ 메소드를 확장해서 인스턴스의 속성 이름이 'parent'일 시 재귀호출하지 않고 바로 값만을 반환하게 수정했다. 코드는 문제없이 작동한다.
+
+```python
+root = BinaryTreeWithParent(10)
+root.left = BinaryTreeWithParent(7, parent=root)
+root.left.right = BinaryTreeWithParent(9, parent=root.left)
+print(root.to_dict())
 
 
-<br><BR><br>
-## Part 3.
-여러 믹스인을 조합할 수도 있다.  
-예를 들어 어떤 클래스에도 동작하는 범용 JSON 직렬화를 제공하는 믹스인이 필요하다고 하자.  
-이 믹스인은 클래스에 to_dict가 있다고 가정하고 만들면 된다.  
+# 결과는 트리 구조를 나타내기 위해 가공함
+{'value': 10,
+ 'parent': None,
+ 'left': {'value': 7,
+	  'parent': 10}, 
+          'left': None,
+	  'right': {'value': 9,
+		    'parent': 7,
+	            'left': None,
+		    'right': None},
+ 'right': None}
+```
+
+이는 추가적인 이점도 있는데 **_BinaryTreeWithParent_ 인스턴스 자신뿐 아니라 이 인스턴스를 속성으로 갖는 다른 무관한 인스턴스에도 자동으로 _ToDictMixin_ 의 기능이 적용된다는 점이다.**
+
+```python
+class NamedSubTree(ToDictMixin):
+    def __init__(self, name, binarytreeparent_instance):
+        self.name = name
+        self.binarytreeparent_instance = binarytreeparent_instance
 
 
-이 코드도 꽤나 어렵다.. 차분히 바라보자
+my_tree = NamedSubTree('foobar', root.left.right)
+print(my_tree.to_dict())
 
+# NamedSubTree 또한 무한루프의 영향을 받지 않음.
+{'name': 'foobar',
+ 'binarytreeparent_instance': {'value': 9,
+                               'left': None,
+                               'right': None,
+                               'parent': 7}}
+```
+
+<br>
+
+## 2. 다중 믹스인 상속
+
+시작하면서 다중 상속은 가급적 믹스인을 대상으로만 하는 것이 좋다고 했다. 그 예를 만들어보자. 앞서 작성한 _ToDictMixin_ 믹스인에 추가로 어떤 클래스에도 동작하는 범용 JSON 직렬화 기능 믹스인이 필요하다고 해보자. 이 믹스인은 클래스에 _ToDictMixin_ 의 _to\_dict_ 메소드가 있다고 가정하고 만들면 된다.
+
+먼저 JSON 직렬화 기능을 구현하는 _JsonMixin_ 를 구현하자.
 
 ```python
 import json
@@ -171,59 +183,66 @@ class JsonMixin:
     @classmethod
     def from_json(cls, data):
         kwargs = json.loads(data)
-	return cls(**kwrags)
+        return cls(**kwargs)  # 1.
 
-    def to_json(self):
+    def to_json(self): # 2.
         return json.dumps(self.to_dict())
 ```
 
-JsonMixin 클래스가 어떻게 인스턴스 메서드와 클래스 메서드를 둘 다 정의하는지 주목하자.  
-믹스인을 이용하면 이 두 종류의 동작을 추가할 수 있다.  
-이 예제에서 JsonMixin의 요구 사항은
+_JsonMixin_ 클래스가 어떻게 인스턴스 메소드와 클래스 메소드를 둘 다 정의하는지 주목하자. 믹스인을 이용하면 두 종류의 동작을 추가할 수 있다. 이 예제에서 _JsonMixin_ 의 요구사항은 클래스에 _to\_dict_ 메소드가 있고(\# 1.), 해당 클래스의 \_\_init\_\_ 메소드에서 키워드 인자를 받는다는 것뿐이다.(\# 2.)
 
-* 클래스에 to_dict 메서드가 있고,(to_json)
-* 해당 클래스의 \_\_init\_\_ 메서드에서 키워드 인수를 받는다는 것이다.(from_json)
-
-이 믹스인을 이용하면 짧은 반복 코드로 JSON을 직렬화하고 JSON에서 역직렬화하는  
-유틸리티 클래스의 계층 구조를 간단하게 생성할 수 있다. 다음 예를 살펴보자.
-
+이 믹스인을 이용하면 짧은 반복 코드로 JSON으로 직렬화하고 역직렬화하는 유틸리티 클래스의 계층구조를 간단하게 생성할 수 있다. 예를 들어 다음은 데이터센터 토폴로지를 구성하는 부분들을 표현하는 데이터 클래스의 계층이다.
 
 ```python
-class DataCenterRack(ToDictMixin, JsonMixin):
-    def __init__(self, swith=None, machines=None):
+class DatacenterRack(ToDictMixin, JsonMixin):
+    def __init__(self, switch=None, machines=None):
         self.switch = Switch(**switch)
-	self.machines = [Machine(**kwargs) for kwargs in machines]
+        self.machines = [Machine(**kwargs) for kwargs in machines]
 
 class Switch(ToDictMixin, JsonMixin):
-    pass
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
 class Machine(ToDictMixin, JsonMixin):
-    pass
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+```
 
+두 믹스인을 상속받는 클래스에는 두 가지 요구사항이 있었는데:
 
+1. _to\_dict_ 메소드를 가지고 있고
+1. **해당 클래스의 \_\_init\_\_ 메소드에서 키워드 인자를 받아 각 key와 value를 인스턴스의 속성으로 설정할 수 있어야 한다.**
 
+2번째 요구사항을 지키기 위해 둘 모두를 상속하는 _Switch_ 와 _Machine_ 클래스에서 _setattr_ 내장함수를 통해 _key_ 를 이름으로 갖는 속성에 _value_ 를 할당했다.
+
+이 클래스들을 JSON으로 직렬화하고 역직렬화하는 방법은 간단하다. 여기서는 데이터가 직렬화와 역직렬화를 통해 원래 상태가 되는지 검증하자.
+
+```python
 serialized = """{
-    "switch" : {"ports": 5, "speed": 1e9},
-    "machines": [
-        {"cores": 8, "ram": 32e9, "disk", 5e12},
-        {"cores": 4, "ram": 16e9, "disk", 1e12},
-        {"cores": 2, "ram": 4e9, "disk", 500e9},
-    ]
+  "switch": {"ports": 5, "speed": 1e9},
+  "machines": [
+    {"cores": 8, "ram": 32e9, "disk": 5e12,
+     "cores": 4, "ram": 16e9, "disk": 1e12,
+     "cores": 2, "ram": 4e9,  "disk": 500e9}
+  ]
 }"""
 
 
-deserialized = DataCenterRack.from_json(serialized)
-roundtrip = deserialized.to_json()
-assert json.loads(serialized) == json.loads(roundtrip)
+deserialized = DatacenterRack.from_json(serialized)
+rountrip = deserialized.to_json()
+
+assert json.loads(serialized) == json.loads(rountrip)
 ```
 
-\*\*kwargs 같은 packing, unpacking은 안다고 생각하겠다.  
-이런 믹스인을 사용할 때는 클래스가 객체 상속 계층의 상위에서 이미  
-JsonMixin을 상속받고 있어도 괜찮다. 결과로 만들어지는 클래스는 같은 방식으로 동작할 것이다.
+복잡한 코드 없이 상속을 통해 정확하게 동작함을 볼 수 있었다.
+
+<Br>
 
 
-## 핵심정리
-* 믹스인 클래스로 같은 결과를 얻을 수 있다면 다중 상속을 하지 말자.
-* 인스턴스 수준에서 동작을 교체할 수 있게 만들어서 믹스인 클래스가 요구할 때  
-  클래스 별로 원하는 동작을 하게 하자.
+## 3. 핵심 정리
+
+* 믹스인 클래스로 같은 결과를 얻을 수 있다면 다중 상속을 사용하지 말자.
+* 인스턴스 수준에서 동작을 교체할 수 있게 만들어서 믹스인 클래스가 요구할 때 클래스별로 원하는 동작을 하게 하자.
 * 간단한 동작들로 복잡한 기능을 생성하려면 믹스인을 조합하자.
