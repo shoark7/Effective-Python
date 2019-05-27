@@ -143,7 +143,7 @@
 [way24]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay24_classmethod.md
 [way25]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay25_InitializeSuperClassWithSuper.md
 [way26]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay26_UseMixinClass.md
-[way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.py
+[way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.md
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay28_CustomContainer_collections.abc.py
 [way29]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay29_dontusegetter.py
 [way30]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay30_Use@property_for_refactoring.md
