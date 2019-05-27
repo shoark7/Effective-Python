@@ -108,7 +108,7 @@ print(baz.__dict__)
 
 ## 2. 비공개 속성 사용의 문제점
 
-그러면 완전히 다른 질문으로 **'이럴거면 애초에 엉성한 비공개 속성 자체를 두는 이유가 있냐고 할 수 있냐'**고 물을 수 있다. 누구나 뚫을 수 있는 비공개면 차라리 그냥 다 공개 속성으로 두지 그래?  충분히 합리적인 질문으로 비공개 속성을 두기라도 두는 것이 어떤 가치가 있을까?
+그러면 완전히 다른 질문으로 '**이럴거면 애초에 엉성한 비공개 속성 자체를 두는 이유가 있냐고 할 수 있냐**'고 물을 수 있다. 누구나 뚫을 수 있는 비공개면 차라리 그냥 다 공개 속성으로 두지 그래?  충분히 합리적인 질문으로 비공개 속성을 두기라도 두는 것이 어떤 가치가 있을까?
 
 과유불급이라고, **무분별하게 객체의 내부에 접근하는 것에도 위험이 따른다.** 파이썬 프로그래머들은 이 위험을 최소화하기 위해 스타일가이드에 정의된 명명 관례를 따른다. **\_protected\_field 처럼 앞에 `_`를 한 개 붙인 필드는 보호 필드로 취급해서 클래스의 외부 사용자들이 신중하게 다뤄야 함을 의미한다.**
 
@@ -138,7 +138,7 @@ foo = MyIntegerSubclass(5)
 assert foo.get_value() == 5
 ```
 
-지금이야 동작하지만 **나중에 클래스의 계층이 변경되면 MyIntegerSubclass 같은 클래스는 비공개 참조가 더는 유효하지 않게 되어 동작하지 않을 수 있다.** 이 클래스가 나중에 다른 클래스를 상속받을지 누가 알 수 있겠는가?
+지금이야 동작하지만 **나중에 클래스의 계층이 변경되면 MyIntegerSubclass 같은 클래스는 비공개 참조가 더는 유효하지 않게 되어 동작하지 않을 수 있다.** 이 클래스가 나중에 다른 클래스를 상속받게 변경될지 누가 알 수 있겠는가?
 
 예를 들어서 _MyIntegerSubclass_ 의 직계 부모인 _MyClass_ 에 _MyBaseClass_ 라는 또 다른 부모 클래스를 추가했다고 하자.
 
@@ -149,7 +149,7 @@ class MyBaseClass:
         self.__value = value
     # ...
 
-class MyClass:
+class MyClass(MyBaseClass):
     pass
 
 
@@ -162,7 +162,7 @@ class MyIntegerSubclass(MyClass):
 
 
 foo = MyIntegerSubclass(5)
-assert foo.get_value() == '5'
+foo.get_value()
 
 AttributeError: 'MyIntegerSubclass' object has no attribute '_MyClass__value'
 ```
@@ -214,6 +214,7 @@ hello and hello should be different
 class ApiClass:
     def __init__(self):
         self.__value = 5
+	# 이전과 달리 비공개로 설정해 자식클래스 속성과의 충돌방지!
 
     def get(self):
         return self.__value
