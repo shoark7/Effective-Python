@@ -53,7 +53,7 @@ print("Frequency of foo is", foo.frequency())
 
 First element of foo is h
 Frequency of foo is {'h': 1, 'i': 2, 'o': 1, 'y': 1, 'f': 1, 'u': 1, 'z': 1, 'p': 1, 'x': 1}
-# 결과는 매 사용마다 변할 것임!
+# 구체적인 결과는 매 사용마다 변할 것임!
 ```
 
 _FrequencyList_ 는 list를 상속받았기 때문에 list가 지원하는 append 메소드와 인덱싱이 모두 가능하다. 거기에 더해 우리가 추가한 _frequency_ 메소드 또한 무난히 잘 작동하는 것을 알 수 있었다.
@@ -140,7 +140,7 @@ Tree is [2, 5, 6, 7, 10, 11, 15]
 
 <br>
 
-# Part 3. 위 방법의 문제점
+## 3. 위 방법의 문제점과 해결책
 
 위와 같이 특정 메소드를 정의함으로써 Sequence 시맨틱을 지원할 수 있었다. 하지만 이 방법은 문제가 있는데 **Sequence 시맨틱에서 사용자가 기대하는 메소드는 인덱싱이 다가 아니며, _count_, _index_ 등의 메소드 등이 더 필요하기 때문이다.** 그러면 이 메소드들을 다 정의해줘야 하는 것인가? 커스텀 컨테이너 타입을 정의하는 일은 보기보다 어렵다.
 
@@ -151,9 +151,9 @@ len(tree)
 TypeError: object of type 'IndexableNode' has no len()
 ```
 
-파이썬 세계의 이런 어려움을 피하기 위해 **내장 collections.abc 모듈은 각 컨테이너 타입에 필요한 일반적인 메소드를 모두 정의하는 추상 기반 클래스들을 정의한다.** 관련 [문서](https://docs.python.org/3/library/collections.abc.html)는 여기서 확인할 수 있다. 이 모듈은 list, tuple, set, dict 들과는 다른 방식의 메소드를 지원하기에 이들을 상속받는 것이 바람직하지 않은 커스텀 컨테이너를 지원하기 위해 있으며 여러 많은 컨테이너 타입에 필요한 일반적인 메소드를 모두 정의하는 추상 기반 클래스를 정의한다.(`abc`가 원래 'abstract base class'의 약자이다.)
+파이썬 세계의 이런 어려움을 피하기 위해 **내장 collections.abc 모듈은 각 컨테이너 타입에 필요한 일반적인 메소드를 모두 명시하는 추상 기반 클래스들을 정의한다.** 관련 [문서](https://docs.python.org/3/library/collections.abc.html)는 여기서 확인할 수 있다. 이 모듈은 list, tuple, set, dict 들과는 다른 방식의 메소드를 지원하기에 이들을 상속받는 것이 바람직하지 않은 커스텀 컨테이너를 지원하기 위해 있으며 여러 많은 컨테이너 타입에 필요한 일반적인 메소드를 모두 정의하는 추상 기반 클래스를 정의한다.(`abc`가 원래 'abstract base class'의 약자이다.)
 
-**이 추상 기반 클래스에서 상속받아 서브클래스를 만들면, 만약 깜박 잊고 필수 메소드를 구현하지 않아도 모듈이 뭔가 잘못되었다고 알려준다.**
+**이 추상 기반 클래스에서 상속받아 서브클래스를 만들면, 만약 깜박 잊고 필수 메소드를 구현하지 않아도 파이썬이 뭔가 잘못되었다고 알려준다.**
 
 ```python
 from collections.abc import Sequence
