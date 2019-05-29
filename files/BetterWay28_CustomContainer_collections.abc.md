@@ -1,223 +1,183 @@
+## Better Way 28. 커스텀 컨테이너 타입은 collections.abc의 클래스를 상속받게 만들자
 
-# 126쪽. 커스텀 컨테이너 타입은 collections.abc의 클래스를 상속받게 만들자. 
-# 2017/01/04일 작성.
+#### 126쪽
 
-############################################################################
+* Created : 2017/01/04
+* Modified: 2019/05/29  
 
+<br>
 
-# Part 1.
+## 1. 컨테이너 상속의 쉬운 예: list
 
-"""
-이 책에서 주장하는 바에 따르면, 파이썬 프로그래밍의 핵심은 데이터를 담은
-클래스를 정의하고 이 객체들이 연계되는 방법을 명시하는 일이다.
+파이썬 프로그래밍의 핵심은 데이터를 담은 클래스를 정의하고 이 객체들이 연계되는 방법을 명시하는 일이다. 모든 파이썬 클래스는 일종의 컨테이너로, 속성과 기능을 함께 캡슐화한다. 파이썬은 데이터 관리용 내장 컨테이너 타입(list, tuple, set, dict)도 제공한다.
 
-모든 파이썬 클래스는 일종의 컨테이너로, 속성과 기능을 함께 캡슐화한다.
-파이썬은 데이터 관리용 내장 컨테이너 타입(리스트, 튜플, 세트, 딕셔너리)도 제공한다.
-"""
-
-"""
-시퀀스(Sequence)처럼 쓰임새가 간단한 클래스를 설계할 때는 파이썬의 내장 list 타입에서 상속받으려고
-하는 게 당연하다고 이 책은 주장한다.
-
-멤버의 빈도를 세는 메서드를 추가로 갖춘 커스텀 리스트 타입을 생성한다고 해보자.
-
-"""
-
-# 이 챕터의 마지막에 내가 Sequence, iterable, iterator, generator를 번역하고 요약한 내용을 적을테니 참고하기
-# 바란다.
+**Sequence처럼 쓰임새가 간단한 클래스를 설계할 때는 파이썬의 내장 list 타입에서 상속받으려고 하는 게 당연하다.** 멤버의 빈도를 세는 메서드를 추가로 갖춘 커스텀 list 타입을 생성한다고 해보자.(Sequence는 list 등의 부모 클래스가 되는 추상클래스다.)
 
 
+```python
 class FrequencyList(list):
-    def __init__(self, *members):
-        super().__init__(*members)
+    def __init__(self, members=None):
+        # list의 생성자는 iterable을 요구하기 때문에
+        # 새 리스트에 인자가 주어지지 않으면 강제로 빈 리스트를 인자로 넘김
+        # help(list) 참고
+        if members is None:
+            members = []
+        super().__init__(members)
 
     def frequency(self):
         counts = {}
-        for item in self:
+        for item in self: # 주목! self를 바로 받아 아이템에 접근할 수 있다.
             counts.setdefault(item, 0)
             counts[item] += 1
         return counts
+```
 
-"""
-리스트를 받아 리스트 본연의 기능은 모두 수행하면서,
-빈도를 세는 frequency라는 메서드가 추가된 상황이다.
+_FrequencyList_ 는 list를 상속받아 리스트 본연의 기능은 모두 수행하면서, 빈도를 세는 _frequency_ 라는 메서드가 추가된 상황이다. **list에서 상속받아 서브클래스를 만들었으므로 list의 표준 기능을 모두 갖춰서 파이썬의 익숙한 시맨틱을 유지한다. 추가한 메서드로 필요한 커스텀 동작을 더할 수 있다.**
 
-이 클래스는 파이썬의 중요한 개념이 참 많이 들어갔는데,
-내가 조금 설명하겠다.
+한번 테스트해보자.
 
-*members:
-    원래 책에선 ' * '가 빠지고, members만 있었다.
-    그런데 리스트를 충실히 구현하기 위해서는 *가 있어야 한다.
-    빈 리스트를 생성 가능한 것을 우리는 안다.( ' [] ', list())
-
-    근데 members가 없으면 빈 객체를 만들 수 없다.(members를 무조건 보내야 하니까!)
-    이때 packing, unpacking 하면서 빈 객체도 만들 수 있게 된다.
-    packing, unpacking의 개념이 헷갈리면 직접 찾아보길 바란다.
-
-for item in self:
-    여기서 난 살짝 당황했는데, self에 바로 for 문을 쓰는 것이 신기했다.
-    우리가 list에 바로 for문을 쓰지 않는가? 
-    그래서 이런 상속 관계에서도 이렇게 표현할 수 있다는 것을 알았다.
-
-counts.setdefault(item, 0):
-    파이썬을 처음 배우면 인덱싱을 기본으로 하게 되고,
-    조금 배우면 get을 배운다.
-    그리고 이제는 setdefault를 배우면 좋다.
-
-    setdefault는 item, 즉 키에 해당하는 값이 딕셔너리 안에 있으면 그 값을 뱉고,
-    없으면 counts[item] = value로
-    딕셔너리 키:값 쌍을 만드는 메소드다.
-    지금 빈도수를 세는 메소드를 만드는데,
-    이 함수를 쓰는 별도의 if문을 쓸 필요 없이 새 원소를 추가해나갈 수 있다.
-"""
-
-
-"""
-다시 돌아와서, list에서 상속받아 서브클래스를 만들었으므로 list의
-표준 기능을 모두 갖춰서 파이썬의 익숙한 시맨틱을 유지한다.
-추가한 메서드로 필요한 커스텀 동작을 더할 수 있다.
-
-"""
-
+```python
 import random
-import string
+from string import ascii_lowercase as LOWERS
 
 
 foo = FrequencyList()
 
-for _ in range(100):
-    foo.append(random.choice(string.ascii_lowercase))
+for _ in range(10):
+    foo.append(random.choice(LOWERS))
 
 
 print("First element of foo is", foo[0])
-print("Frequency of foo is", foo.frequency()
-
-"""
-First element of foo is n
-Frequency of foo is {
-                    't': 3, 'm': 3, 'l': 3,
-                    'f': 6, 'q': 1, 'z': 2,
-                    'x': 2, 'u': 2, 'e': 1,
-                    'o': 2, 'p': 7, 's': 3,
-                    'n': 5, 'w': 2, 'g': 1,
-                    'h': 6, 'd': 4, 'i': 4,
-                    'a': 8, 'y': 4, 'v': 5,
-                    'j': 5, 'b': 7, 'r': 3,
-                    'c': 4, 'k': 7
-                    }
+print("Frequency of foo is", foo.frequency())
 
 
+First element of foo is h
+Frequency of foo is {'h': 1, 'i': 2, 'o': 1, 'y': 1, 'f': 1, 'u': 1, 'z': 1, 'p': 1, 'x': 1}
+# 결과는 매 사용마다 변할 것임!
+```
 
-우리가 원하는 결과가 나왔다.
-각 알파벳의 빈도가 나온다. 모두 더하면 100이 될 것이다.
-"""
-
-
-
-# Part 2.
-
-# 여기서는 원래 바이터니 트리로 설명을 한다. 그런데 내가
-# 잘 몰라서, 같은 내용을 내 수준에 맞게 쉽게 고쳐 쓰도록 하겠다.
-
-"""
-리스트는 아니지만 'list[3]'처럼 인덱싱을 하고 싶다고 하자.
-클래스로 어떻게 정의할 수 있을까?
-
-우리가 list[3], 이렇게 인덱싱하는 것은 사실
-list.__getitem__(3), 이 메서드를 호출하는 것과 동일하다.
-그러니까 우리가 정의하는 클래스에서 이 메서드를 정의하면
-우리가 원하는 전혀 다른 유형의 인덱싱도 가능해진다.
-"""
-
-class MyCustomOne:
-    def __init__(self):
-        pass
-
-    def __getitem__(self, value):
-        print(value, "가 출력되었습니다.")
+_FrequencyList_ 는 list를 상속받았기 때문에 list가 지원하는 append 메소드와 인덱싱이 모두 가능하다. 거기에 더해 우리가 추가한 _frequency_ 메소드 또한 무난히 잘 작동하는 것을 알 수 있었다.
 
 
-my_one = MyCustomOne()
-my_one[4] # 4가 출력되었습니다.
+<br>
 
+## 2. 보다 어려운 예
 
-"""
-인덱싱을 통해 전혀 예상하지 못한 결과를 출력할 수 있다.
-"""
+list 상속만으로도 현실에서 필요한 많은 작업을 무난하게 시행할 수 있다. 하지만 더 복잡한 상황을 가정해보자. 선형 자료구조인 list의 서브 클래스는 아니지만 인덱스로 접근할 수 있게 해서 list처럼 보이는 객체를 제공하고 싶다고 하자.  
 
+예를 들어 비선형 자료구조인 Binary Tree 클래스에 list나 tuple 같은 시퀀스 시맨틱을 제공하고 싶다고 하자. Binary Tree는 트리 자료구조에서 각 노드가 자식을 최대 왼쪽, 오른쪽 단 두 개만 갖는 자료구조로서 원소 추가, 삭제 동작에서 list보다 더 높은 효율을 보일 수 있다.
 
-"""
-__init__, __getitem__ 처럼 클래스를 위한 __??__ 메서드가 정말 많이 존재하는데
-이를 찾아보고 공부하고, 예제를 만들어보는 것은 큰 도움이 된다.
+```python
+class BinaryNode:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+```
 
-이 책에서는 또, len( ) 함수를 구현하는 __len__ 메서드를 구현하고 있다.
-len 함수를 구현한다는 게 무슨 뜻이지? 라고 묻는 독자들을 위해 조금만 소개하면,
+이 클래스가 Sequence처럼 동작하게 하려면 어떻게 해야 할까? 알다시피 파이썬은 특별한 이름을 붙인 인스턴스 메소드로 컨테이너 동작을 구현한다.
 
-만약 학생과 선생님의 정보를 관리하는 SchoolBook이라는 클래스를 정의한다고 하자.
-이 클래스는 학생과 선생님의 목록을 담은 리스트를 따로 관리하는데,
+list의 인덱싱을 예로 들어보자.
 
-len(SchoolBook) 이라는 함수가 학생의 수를 출력하도록 만들고 싶다면,
+```python
+bar = [1, 2, 3]
+bar[0]
+```
 
-__len__ 메서드가 학생의 수를 출력하도록 정의하면 원하는 바를 구할 수 있는 것이다.
+list의 첫 번째 원소를 구하는 간단한 인덱싱이다. 하지만 사실 이는 내부적으로 다음과 같은 메소드를 호출하는 문법이다.
 
-꼭 'python special methods' 라고 검색해서 그 수많은 목록을 확인하고 공부해보기 바란다.
-"""
+```python
+bar.__getitem__(0)
+```
 
+따라서, BinaryNode 클래스가 Sequence처럼 인덱싱을 지원하게 하려면 객체의 트리를 깊이 우선으로 탐색하는 \_\_getitem\_\_ 을 구현하면 된다.
 
+```python
+class IndexableNode(BinaryNode):
+    def _search(self, count, index):
+        # ...
+        # 비선형 트리를 선형으로 직렬화했을 때의 인덱스 찾기
+	# (found, count) 반환
+
+    def __getitem__(self, index):
+        found, _ = self._search(0, index)
+        if not found:
+            raise IndexError("Index out of range")
+        return found.value
+```
+
+이 바이너리 트리는 평소처럼 생성하면 된다.
+
+```python
+tree = IndexableNode(
+            10,
+            left=IndexableNode(
+                    5,
+                    left=IndexableNode(2),
+                    right=IndexableNode(6, right=IndexableNode(7))
+            ),
+            right=IndexableNode(15, left=IndexableNode(11))
+)
+```
+
+이 트리는 Sequence와 달리 비선형 자료구조임에도 탐색은 물ㄹ론이고 list처럼 인덱스로 접근할 수도 있다.
+
+```python
+print('LRR =', tree.left.right.right.value)
+print('Index 0 =', tree[0])
+print('Index 1 =', tree[1])
+print('11 in the tree?', 11 in tree)
+print('17 in the tree?', 17 in tree)
+print('Tree is', list(tree))
+
+LRR = 7
+Index 0 = 2
+Index 1 = 5
+11 in the tree? True
+17 in the tree? False
+Tree is [2, 5, 6, 7, 10, 11, 15]
+```
+
+<br>
 
 # Part 3.
 
-"""
-앞서 우리는 list를 상속받는 '컨테이너'를 만들었고 데이터를 저장하고 관리할 수 있었다.
+위와 같이 특정 메소드를 정의함으로써 Sequence 시맨틱을 지원할 수 있었다. 하지만 이 방법은 문제가 있는데 Sequence 시맨틱에서 사용자가 기대하는 메소드는 인덱싱이 다가 아니며, _count_, _index_ 등의 메소드 등이 더 필요하기 때문이다. 그러면 이 메소드들을 다 정의해줘야 하는 것인가? 커스텀 컨테이너 타입을 정의하는 일은 보기보다 어렵다.
 
-이처럼 우리가 만드는 데이터를 담는 클래스를 커스텀 컨테이너라고 부를 수 있는데,
-커스텀 컨테이너를 정의하는 일은 보기보다 어렵다.
+```python
+len(tree)
 
-파이썬은 이런 어려움을 해결하는 데 도움을 주고자 내장 collections.abc 모듈을 가지고 있다.
-( https://docs.python.org/3/library/collections.abc.html  )
-이 모듈은 list, tuple, set, dict를 상속받는 것만으로 불충분한 컨테이너를 지원하기 위해 있으며
-여러 많은 컨테이너 타입에 필요한 일반적인 메서드를 모두 제공하는 추상 기반 클래스를 정의한다.
-( abc가 원래 'abstract base class'의 약자이다. )
+TypeError: object of type 'IndexableNode' has no len()
+```
 
-이 추상 기반 클래스에서 상속받아 서브클래스를 만들면, 만약 깜박 잊고 필수 메서드를 구현하지 않아도
-모듈이 뭔가 잘못되었다고 알려준다.
+파이썬 세계의 이런 어려움을 피하기 위해 **내장 collections.abc 모듈은 각 컨테이너 타입에 필요한 일반적인 메소드를 모두 제공하는 추상 기반 클래스들을 정의한다.** 관련 [문서](https://docs.python.org/3/library/collections.abc.html)는 여기서 확인할 수 있다. 이 모듈은 list, tuple, set, dict를 상속받는 것만으로 불충분한 컨테이너를 지원하기 위해 있으며 여러 많은 컨테이너 타입에 필요한 일반적인 메서드를 모두 제공하는 추상 기반 클래스를 정의한다.( abc가 원래 'abstract base class'의 약자이다. )
+
+**이 추상 기반 클래스에서 상속받아 서브클래스를 만들면, 만약 깜박 잊고 필수 메서드를 구현하지 않아도 모듈이 뭔가 잘못되었다고 알려준다.**
 """
 
+```python
 from collections.abc import Sequence
 
 class BadType(Sequence):
     pass
 
 foo = BadType()
-"""
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-3-b8aae466db87> in <module>()
-----> 1 foo = BadType()
 
 TypeError: Can't instantiate abstract class BadType with abstract methods __getitem__, __len__
-"""
+```
 
-# 에러 메시지를 보면 추상 메서드 __getitem__, __len__를 구현하지 않아서 에러가 발생하고 있다.
+이 모듈 안에 있는 **_Sequence_ 추상클래스는 Sequence 시맨틱에 요구되는 필수 메소드들을 구현하지 않은 채 정의만하고 있는데, 이 _Sequence_ 를 상속하는 클래스를 정의한다는 것은 정의하는 클래스가 Sequence 시맨틱을 모두 지원하겠다는 선언을 하는 것이다.** 따라서 이 메소드들을 하나라도 구현하지 않으면 시맨틱이 충족되지 않았다고 파이썬에서 알려주기 때문에 요구되는 시맨틱을 모두 지원하는지 놓치지 않을 수 있다.
 
+Sequence에 요구되는 필수 추상 메소드를 구현하면 별도로 작업하지 않아도 Sequence가 지원하는 index와 count 같은 부가적인 메소드를 자동으로 제공한다.
 
-
-
-"""
-Set과 MutableMapping처럼 파이썬의 관례에 맞춰 구현해야 하는 특별한 메서드가 
-많은 더 복잡한 타입을 정의할 때 이런 추상 기반 클래스를 사용하는 이점은 더욱 커진다.
-"""
+Set과 MutableMapping처럼 파이썬의 관례에 맞춰 구현해야 하는 특별한 메서드가 많은 더 복잡한 타입을 정의할 때 이런 추상 기반 클래스를 사용하는 이점은 더욱 커진다.
 
 
-""" 핵심정리
+## 4. 핵심정리
 
 * 쓰임새가 간단할 때는 list, dict와 같은 파이썬의 컨테이너 타입에서 직접 상속받게 하자.
-* 커스텀 컨테이너 타입을 올바르게 구현하는 데 필요한 많은 메서드를 주의해야 한다.
-* 커스텀 컨테이터 타입이 collections.abc에 정의된 인터페이스에서 상속받게 만들어서
-  클래스가 필요한 인터페이스, 동작과 일치하게 하자.
-
-"""
-
+* 커스텀 컨테이너 타입을 올바르게 구현하는 데 필요한 많은 메서드에 주의를 기울여야 한다.
+* 커스텀 컨테이터 타입이 collections.abc에 정의된 인터페이스 클래스를 상속받게 만들어서 클래스가 필요한 인터페이스, 동작과 일치하게 하자.
 
 
 # Part 4. 부록. Sequence, Iterable, Iterator
