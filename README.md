@@ -145,7 +145,7 @@
 [way26]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay26_UseMixinClass.md
 [way27]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay27_UsePrivateAttribute.md
 [way28]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay28_CustomContainer_collections.abc.md
-[way29]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay29_dontusegetter.py
+[way29]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay29_dontusegetter.md
 [way30]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay30_Use@property_for_refactoring.md
 
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.py
