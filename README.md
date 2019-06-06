@@ -148,14 +148,19 @@
 [way29]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay29_dontusegetter.md
 [way30]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay30_Use@property_for_refactoring.md
 [way31]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay31_UseDescriptorForReusablePropertyMethod.md
+[way32]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay32_Use__getattr__and_etc_for_lazy_attributes.md
+
 
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.py
 [way37]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay37_UseThreadForIO.md
 
+
 [way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_Use_functoolswraps.md
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
 
+
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
+
 
 [way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
