@@ -27,7 +27,7 @@ class Serializable:
         return json.dumps({'args': self.args})
 ```
 
-매우 간단한 클래스로서 서브클래스들의 초기화 인자를 JSON으로 직렬화할 메소드를 _serialize_ 를 가지고 있다. 이 클래스를 이용하면 '2차원 점'에 대응하는 간단한 불변 자료구조를 문자열로 쉽게 직렬화할 수 있다.
+매우 간단한 클래스로서 서브클래스들의 초기화 인자를 JSON으로 직렬화할 메소드 _serialize_ 를 가지고 있다. 이 클래스를 이용하면 가령 '2차원 점'에 대응하는 간단한 불변 자료구조를 문자열로 쉽게 직렬화할 수 있다.
 
 ```python
 class Point2D(Serializable):
@@ -41,19 +41,19 @@ class Point2D(Serializable):
 
 point = Point2D(5, 3)
 print('Point     :', point)
-print('Serialized: ', point.serialize())
+print('Serialized:', point.serialize())
 
 
 Point     : Point2D(5, 3)
-Serialized:  {"args": [5, 3]}
+Serialized: {"args": [5, 3]}
 ```
 
-JSON 객체를 문자열로 변환하는 직렬화는 잘 작동함을 확인할 수 있다. 이제 반대로 이 문자열을 역직렬화해서 JSON이 표현하는 Point2D 객체를 생성하자. 많은 방법이 있겠지만 _Serializable_ 를 상속받는 또 다른 클래스를 정의한다.
+JSON 객체를 문자열로 변환하는 직렬화가 잘 작동함을 확인할 수 있다. 이제 반대로 이 문자열을 역직렬화해서 JSON이 표현하는 Point2D 객체를 생성하자. 많은 방법이 있겠지만 여기서는 _Serializable_ 를 상속받는 또 다른 클래스를 정의한다.
 
 ```python
 class Deserializable(Serializable):
     @classmethod
-    def deserilize(cls, json_data):
+    def deserialize(cls, json_data):
         params = json.dumps(json_data)
         return cls(parms['args'])
 ```
@@ -83,7 +83,7 @@ Serialized: {"args": [7, 5]}
 After     : Point2D(7, 5)
 ```
 
-Point2D 객체를 문자열로 직렬화하고, 역직렬화까지 성공적으로 변환했다. 이 방법은 잘 작동하지만, **직렬화된 데이터에 대응하는 타입(예를 들어 Point2D, BetterPoint2D)을 미리 알고 있을 때만 동작한다는 문제점이 있다.** 그 이유는 역직렬화 함수가 특정 클래스에 바운딩되어 있기 때문이다.
+_BetterPoint2D_ 객체를 문자열로 직렬화하고, 반대로 역직렬화까지 성공적으로 변환했다. 이 방법은 잘 작동하지만, **직렬화된 데이터에 대응하는 타입(예를 들어 Point2D, BetterPoint2D)을 미리 알고 있을 때만 동작한다는 문제점이 있다.** 그 이유는 역직렬화 함수가 특정 클래스에 바운딩되어 있기 때문이다.
 
 클래스를 써야하는 복잡한 현실상황이라면 이상적으로는 **JSON으로 직렬화되는 많은 클래스를 갖추고 그중 어떤 클래스든 대응하는 파이썬 객체로 역직렬화하는 공통 함수를 하나만 두려고 할 것이다.**
 
@@ -116,7 +116,7 @@ def deserialize(data):
     return target_class(*params['args'])
 ```
 
-매핑을 관리할 _dict_ 인 _registry_ 와 여기에 클래스를 등록하는 함수와 역직렬화하는 함수를 *register\_class*, _deserialize_ 함수로 각각 만들었다. 이때 기억할 것은 **이 변수와 함수들은 범용으로서 특정 클래스에 바운딩되지 않아 다른 많은 서브클래스들에서 편하게 사용할 수 있다는 점이다.**
+매핑을 관리할 _dict_ 인 _registry_ 와 여기에 클래스를 등록하는 함수와 역직렬화하는 함수를 *register\_class*, _deserialize_ 함수로 각각 만들었다. 이때 기억할 것은 **이 변수와 함수들은 특정 클래스에 바운딩되어 있지 않은 글로벌 이름으로서, 다른 많은 서브클래스들에서 편하게 사용할 수 있다는 점이다.**
 
 _deserialize_ 가 항상 제대로 동작함을 보장하려면 추후에 역직렬화할 법한 모든 클래스에서 *register\_class* 를 호출해야 한다.
 
@@ -127,10 +127,10 @@ class EvenBetterPoint2D(BetterSerializable):
         self.x = x
         self.y = y
 
-register_class(EvenBetterPoint2D)
+register_class(EvenBetterPoint2D) # 클래스 등록!
 ```
 
-이제 어떤 클래스를 담고 있는지 몰라도 임의의 JSON 문자열을 역직렬화할 수 있다.
+이제 문자열 JSON 데이터가 어떤 클래스를 담고 있는지 몰라도 문제없이 역직렬화할 수 있다.
 
 ```python
 Before    : EvenBetterPoint2D(100, 50)
@@ -142,8 +142,7 @@ After     : EvenBetterPoint2D(100, 50)
 
 ## 2. 개선점: 메타클래스로 자동으로 등록하기
 
-이전 장의 범용적인 역직렬화 방법도 문제점이 있다. 이 방법의 문제는 **_register\_class_ 를 호출하는 일을 까먹을 수 있다는 점이다.**
-
+이전 장의 범용적인 역직렬화 방법도 문제점이 있다. 이 방법의 문제는 **서브클래스를 정의할 때 _register\_class_ 를 호출하는 일을 까먹을 수 있다는 점이다.**
 
 ```python
 class Point3D(BetterSerializable):
@@ -167,7 +166,7 @@ deserialize(data)
 KeyError: 'Point3D'
 ```
 
-_Point3D_ 클래스를 등록하는 것을 깜빡했기 때문에 범용 역직렬화 함수의 _registry_ 에서 목표 클래스를 찾지 못했다. 이렇게 모든 서브 클래스에서 필수 기능을 매번 호출하는 일은 오류가 일어날 가능성이 높으며, 특히 초보 프로그래머에게는 어렵다.  
+_Point3D_ 클래스를 등록하는 것을 깜빡했기 때문에 범용 역직렬화 함수의 _registry_ 에서 목표 클래스를 찾지 못했다. 이렇게 모든 서브 클래스에서 필요한 기능을 사용자가 매번 호출하는 일은 오류가 일어날 가능성이 높으며, 특히 초보 프로그래머에게는 어렵다.  
 
 프로그래머가 의도한 대로 **_BetterSerializable_ 을 사용하고, 수동이 아닌 모든 경우에 *register\_class* 가 호출된다고 확신하게 할 수는 없을까?** 메타클래스를 이용하면 서브클래스가 정의될 때 _class_ 문을 가로채는 방법으로 이렇게 만들 수 있다. 메타클래스로 클래스 본문이 끝나자마자 새 타입을 등록하면 된다.
 

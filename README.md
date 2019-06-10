@@ -150,6 +150,7 @@
 [way31]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay31_UseDescriptorForReusablePropertyMethod.md
 [way32]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay32_Use__getattr__and_etc_for_lazy_attributes.md
 [way33]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay33_ValidateSubclassWithMetaclass.md
+[way34]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay34_RegisterClassWithMetaclass.md
 
 
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.py
