@@ -67,7 +67,7 @@
 38. [Better way 38.  스레드에서 데이터 경쟁을 막으려면 Lock을 사용하자][way38]
 39. [Better way 39.  스레드 간의 작업을 조율하려면 Queue를 사용하자][way39]
 40. [Better way 40.  많은 함수를 동시에 실행하려면 코루틴을 고려하자][way40]
-41. [Better way 41.  많은 함수를 동시에 실행하려면 코루틴을 고려하자][way41]
+41. [Better way 41.  진정한 병렬성을 실현하려면 concurrent.futures를 고려하자][way41]
 
 
 ### 6장. 내장 모듈
@@ -151,6 +151,7 @@
 [way32]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay32_Use__getattr__and_etc_for_lazy_attributes.md
 [way33]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay33_ValidateSubclassWithMetaclass.md
 [way34]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay34_RegisterClassWithMetaclass.md
+[way35]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay35_UseDocstringWithMetaclass.md
 
 
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.py
