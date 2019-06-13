@@ -154,7 +154,7 @@
 [way35]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay35_UseDocstringWithMetaclass.md
 
 
-[way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.py
+[way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.md
 [way37]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay37_UseThreadForIO.md
 
 
