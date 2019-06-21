@@ -157,6 +157,8 @@
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.md
 [way37]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay37_UseThreadForIO.md
 [way38]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay38_UseLockForRaceConditionInThread.md
+[way39]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay39_UseQueueToTuneUpTasksInThreads.md
+
 
 [way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_Use_functoolswraps.md
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
