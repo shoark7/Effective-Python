@@ -1,4 +1,4 @@
-## Better Way 43. functools.wraps로 함수 데코레이터를 정의하자
+## Better Way 42. functools.wraps로 함수 데코레이터를 정의하자
 
 #### 216쪽
 
