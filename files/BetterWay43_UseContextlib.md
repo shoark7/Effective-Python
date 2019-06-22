@@ -11,8 +11,6 @@
 
 **파이썬의 'with' 문은 코드를 특별한 컨텍스트(context)에서 실행함을 나타내는 데 사용한다.** 예를 들어 [38장](https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay38_UseLockForRaceConditionInThread.md)에서 살펴본 것처럼 'with'문에 MUTEX를 사용하여 잠금이 설정되어 있는 동안만 들여 쓴 코드를 쓰는 예제를 확인했다.
 
-파이썬에서 with 문은 보통 튜토리얼에서 처음 접했을 것이다.
-
 ```python
 import threading
 
@@ -21,7 +19,7 @@ with lock:
     print("Lock is held by me!")
 ```
 
-**Lock 클래스가 with문을 제대로 지원하는 덕분에 위의 코드는 다음의 try/ finally 구문에 상응한다.**
+**Lock 클래스가 with문을 제대로 지원하는 덕분에 위의 코드는 다음의 try / finally 구문에 상응한다.**
 
 ```python
 lock.acquire()
@@ -31,14 +29,14 @@ finally:
     lock.release()
 ```
 
-위의 두 코드가 같은 일이 한다면 어떤 방법이 더 좋은 practice일까? 일반적으로 같은 성능이면 코드를 줄일 수 있으면 좋다. 그런 의미에서 try / finally 구문에서 반복되는 코드를 작성할 필요가 없는 with 문 버전이 더 낫다.
+위의 두 코드가 같은 일을 한다면 어떤 방법이 더 좋은 practice일까? 일반적으로 같은 성능이면 코드를 줄일 수 있으면 좋다. 그런 의미에서 try / finally 구문에서 반복되는 코드를 작성할 필요가 없는 with 문 버전이 더 낫다.
 
 **내장 모듈 contextlib를 사용하면 객체와 함수를 with 문에 사용할 수 있게 만들기가 쉽다.** 이 모듈은 간단한 함수를 with 문에 사용할 수 있게 해주는 `contextmanager` 데코레이터를 포함한다. 이 데코레이터를 이용하는 방법이 \_\_enter\_\_, \_\_exit\_\_라는 특별한 메소드를 담은 새 클래스를 정의하는 표준 방법보다 훨씬 쉽다.
 
 
 <br>
 
-이번에 사용할 예제는 내장 `logging` 모듈로 만들어보자. 로그는 상황에 따라 다양한 수준의 로그를 남기는데 가끔씩은 코드의 특정 영역에 더 많은 디버깅 로그를 넣고 싶다고 해보자. 여기서는 로깅 심각정 수준(severity level) 두 개로 로그를 남기는 함수를 정의한다.
+이번에 사용할 예제는 내장 `logging` 모듈로 만들어보자. 로그는 상황에 따라 다양한 수준의 로그를 남기는데 가끔씩은 코드의 특정 영역에 더 많은 디버깅 로그를 넣고 싶다고 해보자. 여기서는 로깅 심각성 수준(severity level) 두 개로 로그를 남기는 함수를 정의한다.
 
 이 포스트에서는 `logging` 모듈의 자세한 내용은 생략하도록 하겠다. 필요한 분들은 [공식 문서](https://docs.python.org/3/library/logging.html)를 확인하기 바란다.
 
@@ -72,9 +70,9 @@ ERROR:root:Something very bad; # debug수준 에러는 무시됨.
 
 
 ```python
-import contextlib
+from contextlib import contextmanager
 
-@contextlib.contextmanager
+@contextmanager
 def debug_logging(level):
     logger = logging.getLogger()
     old_level = logger.getEffectiveLevel()
@@ -139,7 +137,7 @@ def log_level(level, name):
         logger.setLevel(old_level)
 ```
 
-with 블록에서 로깅 심각성 수준을 충분히 낮게 설정했으니 as 값으로 deug 같은 로깅 메소드를 호출하면 출력이 나올 것이다. 기본 프로그램 로거의 기본 로깅 심각성 수준은 WARNING이므로 logging 모듈을 직접 사용하면 아무것도 출력되지 않는다.
+with 블록에서 로깅 심각성 수준을 충분히 낮게 설정했으니 as 값으로 debug 같은 로깅 메소드를 호출하면 출력이 나올 것이다. logging 모듈의 기본 로깅 심각성 수준은 WARNING이므로 logging 모듈을 직접 사용하면 아무것도 출력되지 않는다.
 
 ```python
 @contextmanager
