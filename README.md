@@ -162,6 +162,7 @@
 [way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay42_Use_functoolswraps.md
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
 [way44]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay44_UsePickleWithCopyreg.md
+[way45]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay45_UseDatetimeForLocalTime.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
 
