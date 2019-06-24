@@ -54,7 +54,7 @@
 29. [Better way 29.  게터와 세터 메서드 대신에 일반 속성을 사용하자][way29]
 30. [Better way 30.  속성을 리팩토링하는 대신 @property를 고려하자][way30]
 31. [Better way 31.  재사용 가능한 @property 메서드에는 디스크럽터를 사용하자][way31]
-32. [Better way 32.  지연 속성에는 \__getattr__, \__getattribute__, \__setattr__을 사용하자][way32]
+32. [Better way 32.  지연 속성에는 \_\_getattr\_\_, \_\_getattribute\_\_, \__\setattr\_\_을 사용하자][way32]
 33. [Better way 33.  메타클래스로 서브클래스를 검증하자][way33]
 34. [Better way 34.  메타클래스로 클래스의 존재를 등록하자][way34]
 35. [Better way 35.  메타클래스로 클래스 속성에 주석을 달자][way35]
@@ -74,7 +74,7 @@
 
 42. [Better way 42.  functions.wrap로 함수 데코레이터를 정의하자][way42]
 43. [Better way 43.  재사용 가능한 try/finally 동작을 만들려면 contextlib와 with문을 고려하자][way43]
-44. [Better way 44.  copyreg로 pickle을 신뢰할 수 있게 만들자][way44]
+44. [Better way 44.  copyreg으로 pickle을 신뢰할 수 있게 만들자][way44]
 45. [Better way 45.  지역 시간은 time이 아닌 datetime으로 표현하자][way45]
 46. [Better way 46.  내장 알고리즘과 자료 구조를 사용하자][way46]
 47. [Better way 47.  정밀도가 중요할 때는 decimal을 사용하자][way47]
@@ -161,7 +161,7 @@
 
 [way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay42_Use_functoolswraps.md
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
-
+[way44]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay44_UsePickleWithCopyreg.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
 
