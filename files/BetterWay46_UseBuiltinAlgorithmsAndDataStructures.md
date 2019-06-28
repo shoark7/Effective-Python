@@ -19,7 +19,7 @@
 
 ## 2. Double Ended Queue
 
-내장 collections 모듈의 [deque](https://docs.python.org/3/library/collections.html#collections.deque) 자료구조는 Double Ended Queue다. 즉, 양쪽 끝이 열러 있는 큐로서, 이 자료구조는 큐의 양쪽 끝에서 아이템을 삽입하거나 삭제할 때 항상 일정한 시간이 걸리는 연산을 제공한다. 이와 같은 기능은 FIFO 큐를 만들 때 이상적이다.
+내장 collections 모듈의 [deque](https://docs.python.org/3/library/collections.html#collections.deque) 자료구조는 Double Ended Queue다. 즉, 양쪽 끝이 열려 있는 큐로서, 이 자료구조는 큐의 양쪽 끝에서 아이템을 삽입하거나 삭제할 때 항상 일정한 시간이 걸리는 연산을 제공한다. 이와 같은 기능은 FIFO 큐를 만들 때 이상적이다.
 
 ```python
 from collections import deque
@@ -31,7 +31,7 @@ print(fifo.popleft())
 1
 ```
 
-물론 이런 작업은 내장 `list`를 써도 얼마든지 할 수 있다. 하지만 **리스트가 자신의 오른쪽 끝에 원소를 추가, 삭제하는 데는 O(1)에 해결할 수 있는 데 반해, 왼쪽 끝에 원소를 추가, 삭제하는 데는 O(n)의 시간복잡도가 든다.** 이는 리스트의 중요한 한계로 따라서 list를 FIFO 큐로 쓰는 것은 성능이 중요할 때는 좋은 선택이 아니다.
+물론 이런 작업은 내장 `list`를 써도 얼마든지 할 수 있다. 하지만 **리스트가 자신의 오른쪽 끝에 원소를 추가, 삭제하는 작업은 O(1)에 해결할 수 있는 데 반해, 왼쪽 끝에 원소를 추가, 삭제하는 데는 O(n)의 시간복잡도가 든다.** 이는 리스트의 중요한 한계로 따라서 list를 FIFO 큐로 쓰는 것은 성능이 중요할 때는 좋은 선택이 아니다.
 
 
 <br>
@@ -85,7 +85,7 @@ print(counter)
 {'I': 1, 'w': 1, 'a': 3, 'n': 2, 'b': 1, 'e': 1, 'd': 1, 'o': 2, 'c': 1, 't': 1, 'r': 1}
 ```
 
-**collections의 [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict) 자료구조는 키가 존재하지 않으면 자동으로 기본값을 저장하도록 하여 이런 작업을 간소화한다. 할 일은 그저 키가 없을 때마다 기본값을 반환할 함수를 제공하는 것뿐이다.**o
+**collections의 [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict) 자료구조는 키가 존재하지 않으면 자동으로 기본값을 저장하도록 하여 이런 작업을 간소화한다. 할 일은 그저 키가 없을 때마다 기본값을 반환할 함수를 제공하는 것뿐이다.**
 
 ```python
 from collections import defaultdict
@@ -111,7 +111,7 @@ defaultdict(<class 'int'>, {'I': 1, 'w': 1, 'a': 3, 'n': 2, 'b': 1, 'e': 1, 'd':
 
 **힙(heap)은 우선순위 큐(priority queue)를 유지하는 유용한 자료구조다.** 이 자료구조는 자료구조학의 진정한 효자로서 잘 모르면 [관련 문서](https://en.wikipedia.org/wiki/Heap_(data_structure))를 꼭 확인하기 바란다.
 
-힙과 관련된 알고리즘을 파이썬에서도 제공하는데, heapq 모듈은 표준 list 타입으로 힙을 생성하는 heappush, heappop, nsmallest 등의 함수를 제공한다.
+힙과 관련된 알고리즘을 파이썬에서도 제공하는데, [heapq](https://docs.python.org/3/library/heapq.html) 모듈은 표준 list 타입으로 힙을 생성하는 heappush, heappop, nsmallest 등의 함수를 제공한다.
 
 ```python
 from heapq import heappop, heappush
@@ -133,7 +133,7 @@ print(heappop(a), heappop(a), heappop(a), heappop(a))
 
 ## 6. 바이섹션
 
-list에서 아이템을 검색하는 작업은 index 메소드를 호출할 때 리스트의 길이에 비례한 선형적 시간이 걸린다.
+list에서 아이템을 검색하는 작업을 index 메소드를 사용해서 할 때 리스트의 길이에 비례한 선형적 시간이 걸린다.
 
 
 ```python
@@ -153,7 +153,7 @@ print(i)
 991234
 ```
 
-**바이너리 검색의 복잡도는 로그 형태로 증가한다.** 다시 말해 아이템 백만 개를 담은 리스트를 bisect로 검색할 때 걸리는 시간은 아이템 14개(log2 1000000)를 담은 리스트를 index로 순차 검색할 때 걸리는 시간과 거의 같다.
+**바이너리 검색의 복잡도는 로그 형태로 증가한다.** 다시 말해 아이템 백만 개를 담은 리스트를 bisect로 검색할 때 걸리는 시간은 아이템 14개(log2 1000000)를 담은 리스트를 index 메소드로 순차 검색할 때 걸리는 시간과 거의 같다.
 
 
 <br>
@@ -166,7 +166,7 @@ itertools에 있는 함수는 크게 세 가지 범주로 나눌 수 있다.
 
 * 이터레이터 연결
   - chain: 여러 이터레이터를 순차적인 이터레이터 하나로 결합한다.
-  - cycle: 이터레이터의 아티메을 영원히 반복한다.
+  - cycle: 이터레이터의 아이템을 영원히 반복한다.
   - tee: 이터레이터 하나를 병렬 이터레이터 여러 개로 나눈다.
   - zip\_longest: 길이가 서로 다른 이터레이터들에도 잘 동작하는 내장 함수 zip의 변형이다.
 * 이터레이터에서 아이템 필터링
@@ -181,7 +181,7 @@ itertools에 있는 함수는 크게 세 가지 범주로 나눌 수 있다.
 
 <br>
 
-itertools에는 이것말고도 다른 기능이 더 많고 나도 다 써보지도 않았다. 하지만 몇몇은 실제 개발에서 정말 유용할 수 있어서 이 모듈은 살펴볼 가치가 있다.
+itertools에는 이것말고도 다른 기능이 더 많고 나도 다 써보지도 않았다. 하지만 몇몇은 실제 개발에서 정말 유용할 수 있어서 이 내장 모듈은 살펴볼 가치가 있다.
 
 <br>
 

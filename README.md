@@ -76,7 +76,7 @@
 43. [Better way 43.  재사용 가능한 try/finally 동작을 만들려면 contextlib와 with문을 고려하자][way43]
 44. [Better way 44.  copyreg으로 pickle을 신뢰할 수 있게 만들자][way44]
 45. [Better way 45.  지역 시간은 time이 아닌 datetime으로 표현하자][way45]
-46. [Better way 46.  내장 알고리즘과 자료 구조를 사용하자][way46]
+46. [Better way 46.  내장 알고리즘과 자료구조를 사용하자][way46]
 47. [Better way 47.  정밀도가 중요할 때는 decimal을 사용하자][way47]
 48. [Better way 48.  커뮤니티에서 만든 모듈을 어디서 찾아야 하는지 알아두자][way48]
 
@@ -163,6 +163,7 @@
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
 [way44]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay44_UsePickleWithCopyreg.md
 [way45]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay45_UseDatetimeForLocalTime.md
+[way46]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay46_UseBuiltinAlgorithmsAndDataStructures.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
 
