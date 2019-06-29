@@ -164,6 +164,7 @@
 [way44]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay44_UsePickleWithCopyreg.md
 [way45]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay45_UseDatetimeForLocalTime.md
 [way46]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay46_UseBuiltinAlgorithmsAndDataStructures.md
+[way47]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay47_UseDecimalForPrecision.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
 
