@@ -108,15 +108,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 [way1]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay01_KnowThyself.md
 [way2]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay02_PythonStyleGuide.md
 [way3]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay03_Bytes_Str_Unicode.md
@@ -152,8 +143,6 @@
 [way33]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay33_ValidateSubclassWithMetaclass.md
 [way34]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay34_RegisterClassWithMetaclass.md
 [way35]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay35_UseDocstringWithMetaclass.md
-
-
 [way36]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay36_Usesubprocess.md
 [way37]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay37_UseThreadForIO.md
 [way38]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay38_UseLockForRaceConditionInThread.md
@@ -165,9 +154,9 @@
 [way45]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay45_UseDatetimeForLocalTime.md
 [way46]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay46_UseBuiltinAlgorithmsAndDataStructures.md
 [way47]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay47_UseDecimalForPrecision.md
+[way48]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay48_PypiModules.md
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
-
 
 [way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
