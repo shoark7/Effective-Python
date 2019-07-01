@@ -148,6 +148,7 @@
 [way38]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay38_UseLockForRaceConditionInThread.md
 [way39]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay39_UseQueueToTuneUpTasksInThreads.md
 
+
 [way42]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay42_Use_functoolswraps.md
 [way43]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay43_UseContextlib.md
 [way44]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay44_UsePickleWithCopyreg.md
@@ -156,7 +157,9 @@
 [way47]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay47_UseDecimalForPrecision.md
 [way48]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay48_PypiModules.md
 
+
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
+[way50]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay50_UsePackage.md
 
 [way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
