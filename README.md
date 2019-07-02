@@ -160,6 +160,7 @@
 
 [way49]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay49_WriteDocstring.md
 [way50]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay50_UsePackage.md
+[way51]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay51_DefineRootException.md
 
 [way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
