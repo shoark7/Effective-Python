@@ -30,6 +30,8 @@ Required-by:
 마찬가지로 파이썬 웹 마이크로 프레임워크인 [flask](http://flask.pocoo.org/)에도 같은 작업을 할 수 있다.
 
 ```Name: Flask
+$ pip show flask
+
 Version: 1.0.3
 # 생략...
 Location: /home/sunghwanpark/.local/share/virtualenvs/test-dependency-2VwzX83x/lib/python3.6/site-packages
@@ -51,11 +53,11 @@ Required-by: shell
 
 ## 2. 해결책: 가상환경을 통한 프로젝트별 패키지 관리
 
-이런 모든 문제의 해결책은 가상환경(virtual enviroment)을 제공하는 도구를 사용하는 것이다. 여기서는 파이썬의 내장 도구를 살펴본다. 다른 해결책은 [pyenv](https://github.com/pyenv/pyenv), [pipenv](https://docs.pipenv.org/en/latest/) 등이 있지만 여기서 사용할 pyvenv는 3.4 버전 이후부터 설치없이 사용할 수 있어서 살펴볼만하다. 이전 버전에서는 `pip install virtualenv`로 별도의 패키지를 설치한 후 `virtualenv` 명령줄 도구로 사용해야 한다.
+이런 모든 문제의 해결책은 가상환경(virtual environment)을 제공하는 도구를 사용하는 것이다. 관련된 기능을 제공하는 많은 프로그램이 있지만 여기서는 파이썬의 내장 도구를 살펴본다. 다른 해결책은 [pyenv](https://github.com/pyenv/pyenv), [pipenv](https://docs.pipenv.org/en/latest/) 등이 있지만 여기서 사용할 pyvenv는 3.4 버전 이후부터 설치없이 사용할 수 있어서 살펴볼만하다. 이전 버전에서는 `pip install virtualenv`로 별도의 패키지를 설치한 후 `virtualenv` 명령줄 도구로 사용해야 한다.
 
 `pyvenv`는 독립된 버전의 파이썬 환경을 생성할 수 있게 해준다. **pyvenv를 이용하면 같은 시스템에서 같은 이름으로 설치된 패키지의 여러 버전을 충돌없이 사용할 수 있다.** 이 방법으로 같은 컴퓨터에서 서로 다른 여러 프로젝트에서 작업하고 많은 도구를 쓸 수 있다.
 
-**`pyvenv`는 명시적인 버전의 패키지들과 의존 패키지들을 완전히 분리된 디렉토리 구조로 설치하여 독립된 환경을 구성한다.** 덕분에 코드에 알맞은 파이썬 환경을 재현할 수 있다. 이런 가상환경 구성은 앞에서 다룬 뭄ㄴ제를 피하는 올바른 방법이다.
+**`pyvenv`는 명시적인 버전의 패키지들과 의존 패키지들을 완전히 분리된 디렉토리 구조로 설치하여 독립된 환경을 구성한다.** 덕분에 코드에 알맞은 파이썬 환경을 재현할 수 있다. 이런 가상환경 구성은 앞에서 다룬 문제를 피하는 올바른 방법이다.
 
 <br>
 
@@ -110,12 +112,12 @@ $ source bin/activate
 # '$' 앞에 가상환경 이름이 붙었다.
 ```
 
-가상환경을 시작하면 쉘에 따로 설정을 안 했다면 `$` 앞에 가상환경 이름이 붙는다. 이를 통해 **개발자는 현재 쉘이 전역 파이썬 스코프를 사용하지 않고 프로젝트별 가상환경(여기서는 'myproject')에 모듈을 설치하고, 사용할 것이라고 알 수 있다.** 참고로 `source`는 파이썬 명령어는 아니고, 유닉스 쉘의 쉘 스크립트를 실행시키는 명령어다. 'bin/activate'를 에디터로 확인해보면 쉘 명령어 모음을 확인할 수 있다.
+가상환경을 시작하면(사용자가 따로 설정을 안 했을 때) `$` 앞에 가상환경 이름이 붙는다. 이를 통해 **개발자는 현재 쉘이 전역 파이썬 스코프를 사용하지 않고 프로젝트별 가상환경을 유지, 관리하고 있으며(여기서는 'myproject'), 이 가상환경에 모듈을 설치하고, 사용할 것이라고 알 수 있다.** 참고로 `source`는 파이썬 명령어는 아니고, 유닉스 쉘의 쉘 스크립트를 실행시키는 명령어다. 'bin/activate'를 에디터로 확인해보면 쉘 명령어 모음을 확인할 수 있다.
 
 이렇게 가상환경이 활성화되면 파이썬의 경로가 가상 환경 디렉토리로 이동했음을 알 수 있다.
 
 
-```python
+```shell
 (myproject) $ which python
 
 /tmp/myproject/bin/python
@@ -139,7 +141,7 @@ ModuleNotFoundError: No module named 'pytz'
 (myproject) $ pip install pytz
 ```
 
-설치한 후에는 같은 테스트 임포트 명령으로 동작함을 알 수 있다.
+설치한 후에는 아까와 같은 테스트 임포트 명령으로 패키지가 가상환경에서 잘 동작함을 알 수 있다.
 
 ```shell
 (myproject) $ python -c 'import pytz'
@@ -152,7 +154,7 @@ ModuleNotFoundError: No module named 'pytz'
 **가상환경에 대한 작업을 완료하고 기본 시스템(전역 스코프)으로 돌아가려면 `deactivate` 명령을 실행하면 된다.** 이 명령은 python 명령줄 도구의 위치를 포함한 환경을 시스템 기본 환경으로 복원한다.
 
 
-```python
+```shell
 (myproject) $ deactivate
 $ which python
 
@@ -201,7 +203,7 @@ myproject에서 만든 **requirements.txt 파일을 `pip install`를 통해 실�
 # requirements.txt는 myproject에서 복사해왔다고 가정
 ```
 
-해당 명령어를 입력하면 myproject의 모든 패키지를 원 버전에 맞게 완벽하게 설치할 수 있다. 저 명령어의 `-r` 옵션은 'recursive'의 약자로 requirements.txt에 나열되어 있는 모든 패키지를 반복적으로 설치하겠다는 뜻이 된다. 설치가 완료되면 프로젝트의 모든 환경이 다른 환경으로 완벽하게 복제할 수 있다.
+해당 명령어를 입력하면 myproject의 모든 패키지를 원 버전에 맞게 완벽하게 설치할 수 있다. 저 명령어의 `-r` 옵션은 'recursive'의 약자로 requirements.txt에 나열되어 있는 모든 패키지를 반복적으로 설치하겠다는 뜻이 된다. 설치가 문제없이 완료되면 프로젝트의 모든 환경이 다른 환경으로 완벽하게 복제됐다.
 
 **`requirements.txt`를 사용하면 버전 제어 시스템을 사용해 다른 사람들과 협력하기에 좋다.** 변경한 코드를 커밋할 때 패키지 의존성 목록이 수정되어 정확하게 변경됨을 보장할 수 있다.
 
@@ -209,7 +211,7 @@ myproject에서 만든 **requirements.txt 파일을 `pip install`를 통해 실�
 
 ## 4. 핵심 정리
 
-* 가상환경은 pip를 사용하여 같은 머신에서 같은 패키지의 여러 버전을 충돌 없이 설치할 수 있게 해준다.
+* 가상환경은 pip을 사용하여 같은 머신에서 같은 패키지의 여러 버전을 충돌 없이 설치할 수 있게 해준다.
 * 가상환경을 만드는 프로그램은 많지만 내장 pyvenv를 사용하면 추가 설치없이 가상환경을 관리할 수 있다.
 * pip freeze로 환경에 대한 모든 요구 사항을 덤프할 수 있다. `requirements.txt` 파일을 `pip install -r` 명령의 인수로 전달하여 환경을 재현할 수 있다.
 * 파이썬 3.4 이전 버전에서는 pyvenv 도구를 별도로 설치해야 했고 명령줄 도구의 이름도 pyvenv가 아닌 virtualenv다.

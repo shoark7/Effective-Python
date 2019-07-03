@@ -162,6 +162,7 @@
 [way50]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay50_UsePackage.md
 [way51]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay51_DefineRootException.md
 [way52]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay52_HowToGetRidOfCircularDependency.md
+[way53]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay53_UseVirtualEnvironment.md
 
 [way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
