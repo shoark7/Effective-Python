@@ -50,7 +50,7 @@ a = '\x07'
 print(a)
 print(repr(a))
 
-# 아무 것도 출력되지 않음.(ascii code 07 - bell)
+        # 아무 것도 출력되지 않음.(ascii code 07 - bell)
 '\x07'  # repr은 출력 가능한 형태를 출력하기 때문에 문자열 표현이 출력됨
 ```
 
@@ -100,7 +100,6 @@ class OpaqueClass:
 obj = OpaqueClass(1, 2)
 print(obj)
 
->>>
 <__main__.OpaqueClass object at 0x102b1c28>
 ```
 
@@ -134,7 +133,7 @@ print(obj.__dict__)
 
 <br>
 
-## 3. 핵심정리
+## 3. 핵심 정리
 
 * 내장 타입에 print를 호출하면 사람이 이해하기는 쉽지만 타입 정보는 숨은 문자열 버전의 값이 나온다.
 * 내장 타입에 repr을 호출하면 출력할 수 있는 문자열 버전의 값이 나온다. 이 repr 문자열을 eval 내장 함수에 전달하면 원래 값으로 되돌릴 수 있다.
