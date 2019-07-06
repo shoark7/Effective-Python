@@ -169,3 +169,4 @@
 [way55]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay55_UseReprForDebug.md
 [way56]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay56_UseUnittest.md
 [way57]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay57_Use_pdb.md
+[way58]:https://github.com/shoark7/Effective-Python/blob/master/files/BetterWay58_ProfileBeforeOptimization.md
