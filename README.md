@@ -2,9 +2,14 @@
 
 -- It's for Koreans. For non-koreans, please see other posts.
 
-* [파이썬 코딩의 기술](http://book.naver.com/bookdb/book_detail.nhn?bid=10382589)의 59장의 내용을 한 장씩 정리.
+* [『파이썬 코딩의 기술』](http://book.naver.com/bookdb/book_detail.nhn?bid=10382589)의 59장의 내용을 한 장씩 정리.
 * 책을 대신해서 볼 수 있을 정도로 구체적으로 옮김.
 * 책 버전은 초판 2쇄(2016-06-20).
+
+* V1 완료 날짜: 2019-07-06
+* 40, 41 챕터는 본인의 비동기에 대한 이해 부족으로 아직 공부 못 했음. 향후 업데이트 하겠습니다.
+
+<br>
 
 ## 목차
 
@@ -81,7 +86,7 @@
 48. [Better way 48.  커뮤니티에서 만든 모듈을 어디서 찾아야 하는지 알아두자][way48]
 
 
-### 7장. 내장 모듈
+### 7장. 협력
 
 49. [Better way 49.  모든 함수, 클래스, 모듈에 docstring을 작성하자][way49]
 50. [Better way 50.  모듈을 구성하고 안정적인 API를 제공하려면 패키지를 사용하자][way50]
